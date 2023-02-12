@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// #define int long long int
 #define endl "\n"
 #define pb push_back
 #define mp make_pair
@@ -46,48 +45,44 @@ void online_judge() {
 #endif
 }
 
+const int MAX_M = 1000;
+const int MAX_N = 10;
+
+// DP[i][k] - number of ways to fully cover first i−1 columns and have a
+// mask k on the ith column where every set bit in k corresponds to an already
+// occupied cell and unset bit to unoccupied cells.
+int DP[MAX_M + 1][1 << MAX_N];
+int n, m;
+
+void compute(int i, int j, int k, int l) {
+  if (j == n) {
+    DP[i][k] += DP[i - 1][l];
+    DP[i][k] %= mod;
+    return;
+  }
+
+  if (k >> j & 1) {
+    compute(i, j + 1, k, l);
+    return;
+  }
+
+  if (j + 1 < n && !(k >> (j + 1) & 1)) {
+    compute(i, j + 2, k, l);
+  }
+
+  compute(i, j + 1, k, l ^ (1 << j));
+}
+
 void solve() {
-  int n, m;
   cin >> n >> m;
 
-  int pow_n = (1 << n);
+  DP[0][0] = 1;
 
-  vector<vector<int>> cp(pow_n, vector<int>(pow_n, 0));
-  rep(i, 0, pow_n) {
-    rep(j, 0, pow_n) {
-      cp[i][j] = 1;
-      rep(k, 0, n) {
-        if ((i >> k & 1) && (j >> k & 1)) {
-          cp[i][j] = 0;
-          break;
-        }
-
-        if (!(i >> k & 1) && !(j >> k & 1)) {
-          if (k + 1 < n && !(i >> (k + 1) & 1) && !(j >> (k + 1) & 1)) {
-            k++;
-            continue;
-          }
-          cp[i][j] = 0;
-          break;
-        }
-      }
-    }
+  rep(i, 1, m + 1) {
+    rep(k, 0, 1 << n) { compute(i, 0, k, 0); }
   }
 
-  // dp[j][i] - number of ways to fully cover first j−1 columns and have a
-  // mask i on the jth column where every set bit in i corresponds to an already
-  // occupied cell and unset bit to unoccupied cells.
-  vector<vector<int>> dp(m + 1, vector<int>(pow_n, 0));
-  dp[0][0] = 1;
-  rep(j, 1, m + 1) {
-    rep(i, 0, pow_n) {
-      rep(k, 0, pow_n) {
-        dp[j][i] += cp[k][i] * dp[j - 1][k];
-        dp[j][i] %= mod;
-      }
-    }
-  }
-  print(dp[m][0]);
+  print(DP[m][0]);
 }
 
 int main() {
