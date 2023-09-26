@@ -22,4 +22,5 @@ code solutions/weird-algorithm/main.cpp
 ### Introductory Problems
 
 1. [Weird Algorithm](/solutions/weird-algorithm/main.cpp)
-1. [Missing Number](/solutions/weird-algorithm/main.cpp)
+1. [Missing Number](/solutions/missing-number/main.cpp)
+1. [Repetitions](/solutions/repetitions/main.cpp)
