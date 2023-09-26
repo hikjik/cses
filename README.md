@@ -25,3 +25,4 @@ code solutions/weird-algorithm/main.cpp
 1. [Missing Number](/solutions/missing-number/main.cpp)
 1. [Repetitions](/solutions/repetitions/main.cpp)
 1. [Increasing Array](/solutions/increasing-array/main.cpp)
+1. [Permutations](/solutions/permutations/main.cpp)
