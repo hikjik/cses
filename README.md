@@ -68,3 +68,4 @@ code solutions/weird-algorithm/main.cpp
 20. [Reading Books](/solutions/reading-books/main.cpp)
 20. [Sum of Three Values](/solutions/sum-of-three-values/main.cpp)
 20. [Sum of Four Values](/solutions/sum-of-four-values/main.cpp)
+20. [Nearest Smaller Values](/solutions/nearest-smaller-values/main.cpp)
