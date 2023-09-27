@@ -39,4 +39,5 @@ code solutions/weird-algorithm/main.cpp
 1. [Apple Division](/solutions/apple-division/main.cpp)
 1. [Chessboard and Queens](/solutions/chessboard-and-queens/main.cpp)
 1. [Digit Queries](/solutions/digit-queries/main.cpp)
+1. [Grid Paths](/solutions/grid-paths/main.cpp)
 
