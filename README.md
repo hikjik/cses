@@ -62,3 +62,4 @@ code solutions/weird-algorithm/main.cpp
 20. [Josephus Problem II](/solutions/josephus-problem-ii/main.cpp)
 20. [Nested Ranges Check](/solutions/nested-ranges-check/main.cpp)
 20. [Nested Ranges Count](/solutions/nested-ranges-count/main.cpp)
+20. [Room Allocation](/solutions/room-allocation/main.cpp)
