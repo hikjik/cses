@@ -72,3 +72,4 @@ code solutions/weird-algorithm/main.cpp
 20. [Subarray Sums I](/solutions/subarray-sums-i/main.cpp)
 20. [Subarray Sums II](/solutions/subarray-sums-ii/main.cpp)
 20. [Subarray Divisibility](/solutions/subarray-divisibility/main.cpp)
+20. [Subarray Distinct Values](/solutions/subarray-distinct-values/main.cpp)
