@@ -56,3 +56,4 @@ code solutions/weird-algorithm/main.cpp
 20. [Collecting Numbers](/solutions/collecting-numbers/main.cpp)
 20. [Collecting Numbers II](/solutions/collecting-numbers-ii/main.cpp)
 20. [Playlist](/solutions/playlist/main.cpp)
+20. [Towers](/solutions/towers/main.cpp)
