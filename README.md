@@ -33,3 +33,4 @@ code solutions/weird-algorithm/main.cpp
 1. [Trailing Zeros](/solutions/trailing-zeros/main.cpp)
 1. [Coin Piles](/solutions/coin-piles/main.cpp)
 1. [Palindrome Reorder](/solutions/palindrome-reorder/main.cpp)
+1. [Gray Code](/solutions/gray-code/main.cpp)
