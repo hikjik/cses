@@ -45,3 +45,4 @@ code solutions/weird-algorithm/main.cpp
 
 20. [Distinct Numbers](/solutions/distinct-numbers/main.cpp)
 20. [Apartments](/solutions/apartments/main.cpp)
+20. [Ferris Wheel](/solutions/ferris-wheel/main.cpp)
