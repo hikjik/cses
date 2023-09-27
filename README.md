@@ -65,3 +65,4 @@ code solutions/weird-algorithm/main.cpp
 20. [Room Allocation](/solutions/room-allocation/main.cpp)
 20. [Factory Machines](/solutions/factory-machines/main.cpp)
 20. [Tasks and Deadlines](/solutions/tasks-and-deadlines/main.cpp)
+20. [Reading Books](/solutions/reading-books/main.cpp)
