@@ -70,3 +70,4 @@ code solutions/weird-algorithm/main.cpp
 20. [Sum of Four Values](/solutions/sum-of-four-values/main.cpp)
 20. [Nearest Smaller Values](/solutions/nearest-smaller-values/main.cpp)
 20. [Subarray Sums I](/solutions/subarray-sums-i/main.cpp)
+20. [Subarray Sums II](/solutions/subarray-sums-ii/main.cpp)
