@@ -50,3 +50,4 @@ code solutions/weird-algorithm/main.cpp
 20. [Restaurant Customers](/solutions/restaurant-customers/main.cpp)
 20. [Movie Festival](/solutions/movie-festival/main.cpp)
 20. [Sum of Two Values](/solutions/sum-of-two-values/main.cpp)
+20. [Maximum Subarray Sum](/solutions/maximum-subarray-sum/main.cpp)
