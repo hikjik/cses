@@ -47,3 +47,4 @@ code solutions/weird-algorithm/main.cpp
 20. [Apartments](/solutions/apartments/main.cpp)
 20. [Ferris Wheel](/solutions/ferris-wheel/main.cpp)
 20. [Concert Tickets](/solutions/concert-tickets/main.cpp)
+20. [Restaurant Customers](/solutions/restaurant-customers/main.cpp)
