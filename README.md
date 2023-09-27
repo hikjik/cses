@@ -52,3 +52,4 @@ code solutions/weird-algorithm/main.cpp
 20. [Sum of Two Values](/solutions/sum-of-two-values/main.cpp)
 20. [Maximum Subarray Sum](/solutions/maximum-subarray-sum/main.cpp)
 20. [Stick Lengths](/solutions/stick-lengths/main.cpp)
+20. [Missing Coin Sum](/solutions/missing-coin-sum/main.cpp)
