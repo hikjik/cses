@@ -30,3 +30,4 @@ code solutions/weird-algorithm/main.cpp
 1. [Two Knights](/solutions/two-knights/main.cpp)
 1. [Two Sets](/solutions/two-sets/main.cpp)
 1. [Bit Strings](/solutions/bit-strings/main.cpp)
+1. [Trailing Zeros](/solutions/trailing-zeros/main.cpp)
