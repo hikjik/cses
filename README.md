@@ -55,3 +55,4 @@ code solutions/weird-algorithm/main.cpp
 20. [Missing Coin Sum](/solutions/missing-coin-sum/main.cpp)
 20. [Collecting Numbers](/solutions/collecting-numbers/main.cpp)
 20. [Collecting Numbers II](/solutions/collecting-numbers-ii/main.cpp)
+20. [Playlist](/solutions/playlist/main.cpp)
