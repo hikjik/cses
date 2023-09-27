@@ -28,3 +28,4 @@ code solutions/weird-algorithm/main.cpp
 1. [Permutations](/solutions/permutations/main.cpp)
 1. [Number Spiral](/solutions/number-spiral/main.cpp)
 1. [Two Knights](/solutions/two-knights/main.cpp)
+1. [Two Sets](/solutions/two-sets/main.cpp)
