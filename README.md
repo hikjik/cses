@@ -76,3 +76,4 @@ code solutions/weird-algorithm/main.cpp
 20. [Array Division](/solutions/array-division/main.cpp)
 20. [Sliding Median](/solutions/sliding-median/main.cpp)
 20. [Sliding Cost](/solutions/sliding-cost/main.cpp)
+20. [Movie Festival II](/solutions/movie-festival-ii/main.cpp)
