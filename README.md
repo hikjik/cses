@@ -78,3 +78,7 @@ code solutions/weird-algorithm/main.cpp
 20. [Sliding Cost](/solutions/sliding-cost/main.cpp)
 20. [Movie Festival II](/solutions/movie-festival-ii/main.cpp)
 20. [Maximum Subarray Sum II](/solutions/maximum-subarray-sum-ii/main.cpp)
+
+### Dynamic Programming
+
+55. [Dice Combinations](/solutions/dice-combinations/main.cpp)
