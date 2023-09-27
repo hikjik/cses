@@ -37,3 +37,5 @@ code solutions/weird-algorithm/main.cpp
 1. [Tower of Hanoi](/solutions/tower-of-hanoi/main.cpp)
 1. [Creating Strings](/solutions/creating-strings/main.cpp)
 1. [Apple Division](/solutions/apple-division/main.cpp)
+1. [Chessboard and Queens](/solutions/chessboard-and-queens/main.cpp)
+
