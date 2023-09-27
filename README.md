@@ -41,3 +41,7 @@ code solutions/weird-algorithm/main.cpp
 1. [Digit Queries](/solutions/digit-queries/main.cpp)
 1. [Grid Paths](/solutions/grid-paths/main.cpp)
 
+### Sorting and Searching
+
+20. [Distinct Numbers](/solutions/distinct-numbers/main.cpp)
+
