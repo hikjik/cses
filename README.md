@@ -44,4 +44,4 @@ code solutions/weird-algorithm/main.cpp
 ### Sorting and Searching
 
 20. [Distinct Numbers](/solutions/distinct-numbers/main.cpp)
-
+20. [Apartments](/solutions/apartments/main.cpp)
