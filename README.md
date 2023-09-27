@@ -82,3 +82,20 @@ code solutions/weird-algorithm/main.cpp
 ### Dynamic Programming
 
 55. [Dice Combinations](/solutions/dice-combinations/main.cpp)
+55. [Minimizing Coins](/solutions/minimizing-coins/main.cpp)
+
+<!-- ### Graph Algorithms -->
+
+<!-- ### Range Queries -->
+
+<!-- ### Tree Algorithms -->
+
+<!-- ### Mathematics -->
+
+<!-- ### String Algorithms -->
+
+<!-- ### Geometry -->
+
+<!-- ### Advanced Techniques -->
+
+<!-- ### Additional Problems -->
