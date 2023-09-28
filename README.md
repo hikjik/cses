@@ -85,7 +85,7 @@ code solutions/weird-algorithm/main.cpp
 55. [Minimizing Coins](/solutions/minimizing-coins/main.cpp)
 55. [Coin Combinations I](/solutions/coin-combinations-i/main.cpp)
 55. [Coin Combinations II](/solutions/coin-combinations-ii/main.cpp)
-
+55. [Removing Digits](/solutions/removing-digits/main.cpp)
 
 <!-- ### Graph Algorithms -->
 
