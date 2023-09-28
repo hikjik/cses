@@ -120,6 +120,7 @@ code solutions/weird-algorithm/main.cpp
 145. [Exponentiation](/solutions/exponentiation/main.cpp)
 145. [Exponentiation II](/solutions/exponentiation-ii/main.cpp)
 145. [Counting Divisors](/solutions/counting-divisors/main.cpp)
+145. [Common Divisors](/solutions/common-divisors/main.cpp)
 
 <!-- ### String Algorithms -->
 
