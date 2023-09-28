@@ -104,6 +104,7 @@ code solutions/weird-algorithm/main.cpp
 ### Graph Algorithms
 
 74. [Counting Rooms](/solutions/counting-rooms/main.cpp)
+74. [Labyrinth](/solutions/labyrinth/main.cpp)
 
 
 <!-- ### Range Queries -->
