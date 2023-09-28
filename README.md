@@ -97,6 +97,7 @@ code solutions/weird-algorithm/main.cpp
 55. [Two Sets II](/solutions/two-sets-ii/main.cpp)
 55. [Increasing Subsequence](/solutions/increasing-subsequence/main.cpp)
 55. [Projects](/solutions/projects/main.cpp)
+55. [Elevator Rides](/solutions/elevator-rides/main.cpp)
 
 
 <!-- ### Graph Algorithms -->
