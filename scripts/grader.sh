@@ -113,8 +113,6 @@ for ((i = 1; i <= $MAX_N; i++)); do
 done
 N=$(expr $i - 1)
 
-echo
-
 echo >>.overview
 echo -n "Overview: "
 cat .overview
@@ -126,5 +124,9 @@ fi
 echo -n "$CORRECT / $N"
 if [ $CORRECT -eq $N ]; then
   echo -en "   ${GREEN}All test cases passed!!${NC}"
+  echo
+else
+  echo
+  exit 1
 fi
 echo

@@ -14,7 +14,7 @@ code solutions/weird-algorithm/main.cpp
 ## Test solution
 
 ```bash
-./grader.sh solutions/weird-algorithm/main.cpp
+./scripts/grader.sh solutions/weird-algorithm/main.cpp
 ```
 
 ## Problem Set
