@@ -109,7 +109,7 @@ code solutions/weird-algorithm/main.cpp
 74. [Labyrinth](/solutions/labyrinth/main.cpp)
 74. [Building Roads](/solutions/building-roads/main.cpp)
 74. [Message Route](/solutions/message-route/main.cpp)
-74. Building Teams
+74. [Building Teams](/solutions/building-teams/main.cpp)
 74. Round Trip
 74. Monsters
 74. Shortest Routes I
