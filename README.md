@@ -118,6 +118,7 @@ code solutions/weird-algorithm/main.cpp
 
 145. Josephus Queries
 145. [Exponentiation](/solutions/exponentiation/main.cpp)
+145. [Exponentiation II](/solutions/exponentiation-ii/main.cpp)
 
 <!-- ### String Algorithms -->
 
