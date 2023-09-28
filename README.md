@@ -106,12 +106,17 @@ code solutions/weird-algorithm/main.cpp
 74. [Counting Rooms](/solutions/counting-rooms/main.cpp)
 74. [Labyrinth](/solutions/labyrinth/main.cpp)
 
+<!-- ### Range Queries
 
-<!-- ### Range Queries -->
+110. [Static Range Sum Queries] -->
 
-<!-- ### Tree Algorithms -->
+### Tree Algorithms
 
-<!-- ### Mathematics -->
+129. [Subordinates](/solutions/subordinates/main.cpp)
+
+<!-- ### Mathematics
+
+145. [Josephus Queries] -->
 
 <!-- ### String Algorithms -->
 
