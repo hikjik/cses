@@ -105,14 +105,81 @@ code solutions/weird-algorithm/main.cpp
 
 74. [Counting Rooms](/solutions/counting-rooms/main.cpp)
 74. [Labyrinth](/solutions/labyrinth/main.cpp)
+74. Building Roads
+74. Message Route
+74. Building Teams
+74. Round Trip
+74. Monsters
+74. Shortest Routes I
+74. Shortest Routes II
+74. High Score
+74. Flight Discount
+74. Cycle Finding
+74. Flight Routes
+74. Round Trip II
+74. Course Schedule
+74. Longest Flight Route
+74. Game Routes
+74. Investigation
+74. Planets Queries I
+74. Planets Queries II
+74. Planets Cycles
+74. Road Reparation
+74. Road Construction
+74. Flight Routes Check
+74. Planets and Kingdoms
+74. Giant Pizza
+74. Coin Collector
+74. Mail Delivery
+74. De Bruijn Sequence
+74. Teleporters Path
+74. Hamiltonian Flights
+74. Knight's Tour
+74. Download Speed
+74. Police Chase
+74. School Dance
+74. Distinct Routes
 
 ### Range Queries
 
 110. [Static Range Sum Queries](/solutions/static-range-sum-queries/main.cpp)
+110. Static Range Minimum Queries
+110. Dynamic Range Sum Queries
+110. Dynamic Range Minimum Queries
+110. Range Xor Queries
+110. Range Update Queries
+110. Forest Queries
+110. Hotel Queries
+110. List Removals
+110. Salary Queries
+110. Prefix Sum Queries
+110. Pizzeria Queries
+110. Subarray Sum Queries
+110. Distinct Values Queries
+110. Increasing Array Queries
+110. Forest Queries II
+110. Range Updates and Sums
+110. Polynomial Queries
+110. Range Queries and Copies
 
 ### Tree Algorithms
 
 129. [Subordinates](/solutions/subordinates/main.cpp)
+129. Tree Matching
+129. Tree Diameter
+129. Tree Distances I
+129. Tree Distances II
+129. Company Queries I
+129. Company Queries II
+129. Distance Queries
+129. Counting Paths
+129. Subtree Queries
+129. Path Queries
+129. Path Queries II
+129. Distinct Colors
+129. Finding a Centroid
+129. Fixed-Length Paths I
+129. Fixed-Length Paths II
 
 ### Mathematics
 
@@ -121,11 +188,169 @@ code solutions/weird-algorithm/main.cpp
 145. [Exponentiation II](/solutions/exponentiation-ii/main.cpp)
 145. [Counting Divisors](/solutions/counting-divisors/main.cpp)
 145. [Common Divisors](/solutions/common-divisors/main.cpp)
+145. Sum of Divisors
+145. Divisor Analysis
+145. Prime Multiples
+145. Counting Coprime Pairs
+145. Binomial Coefficients
+145. Creating Strings II
+145. Distributing Apples
+145. Christmas Party
+145. Bracket Sequences I
+145. Bracket Sequences II
+145. Counting Necklaces
+145. Counting Grids
+145. Fibonacci Numbers
+145. Throwing Dice
+145. Graph Paths I
+145. Graph Paths II
+145. Dice Probability
+145. Moving Robots
+145. Candy Lottery
+145. Inversion Probability
+145. Stick Game
+145. Nim Game I
+145. Nim Game II
+145. Stair Game
+145. Grundy's Game
+145. Another Game
 
-<!-- ### String Algorithms -->
+### String Algorithms
 
-<!-- ### Geometry -->
+176. Word Combinations
+176. String Matching
+176. Finding Borders
+176. Finding Periods
+176. Minimal Rotation
+176. Longest Palindrome
+176. Required Substring
+176. Palindrome Queries
+176. Finding Patterns
+176. Counting Patterns
+176. Pattern Positions
+176. Distinct Substrings
+176. Repeating Substring
+176. String Functions
+176. Substring Order I
+176. Substring Order II
+176. Substring Distribution
 
-<!-- ### Advanced Techniques -->
 
-<!-- ### Additional Problems -->
+### Geometry
+
+193. Point Location Test
+193. Line Segment Intersection
+193. Polygon Area
+193. Point in Polygon
+193. Polygon Lattice Points
+193. Minimum Euclidean Distance
+193. Convex Hull
+
+
+### Advanced Techniques
+
+200. Meet in the Middle
+200. Hamming Distance
+200. Beautiful Subgrids
+200. Reachable Nodes
+200. Reachability Queries
+200. Cut and Paste
+200. Substring Reversals
+200. Reversals and Sums
+200. Necessary Roads
+200. Necessary Cities
+200. Eulerian Subgraphs
+200. Monster Game I
+200. Monster Game II
+200. Subarray Squares
+200. Houses and Schools
+200. Knuth Division
+200. Apples and Bananas
+200. One Bit Positions
+200. Signal Processing
+200. New Roads Queries
+200. Dynamic Connectivity
+200. Parcel Delivery
+200. Task Assignment
+200. Distinct Routes II
+
+### Additional Problems
+
+224. Shortest Subsequence
+224. Counting Bits
+224. Swap Game
+224. Prüfer Code
+224. Acyclic Graph Edges
+224. Strongly Connected Edges
+224. Even Outdegree Edges
+224. Multiplication Table
+224. Advertisement
+224. Special Substrings
+224. Permutation Inversions
+224. Maximum Xor Subarray
+224. Movie Festival Queries
+224. Chess Tournament
+224. Tree Traversals
+224. Network Renovation
+224. Graph Girth
+224. Intersection Points
+224. Inverse Inversions
+224. Monotone Subsequences
+224. String Reorder
+224. Stack Weights
+224. Pyramid Array
+224. Increasing Subsequence II
+224. String Removals
+224. Bit Inversions
+224. Xor Pyramid
+224. Writing Numbers
+224. String Transform
+224. Letter Pair Move Game
+224. Maximum Building I
+224. Sorting Methods
+224. Cyclic Array
+224. List of Sums
+224. Increasing Array II
+224. Food Division
+224. Bit Problem
+224. Swap Round Sorting
+224. Binary Subsequences
+224. Tree Isomorphism I
+224. Counting Sequences
+224. Critical Cities
+224. School Excursion
+224. Coin Grid
+224. Robot Path
+224. Programmers and Artists
+224. Course Schedule II
+224. Removing Digits II
+224. Coin Arrangement
+224. Counting Bishops
+224. Grid Puzzle I
+224. Grid Puzzle II
+224. Empty String
+224. Grid Paths
+224. Bit Substrings
+224. Reversal Sorting
+224. Counting Reorders
+224. Book Shop II
+224. Network Breakdown
+224. Visiting Cities
+224. Missing Coin Sum Queries
+224. Number Grid
+224. Maximum Building II
+224. Filling Trominos
+224. Stick Divisions
+224. Coding Company
+224. Flight Route Requests
+224. Two Stacks Sorting
+224. Tree Isomorphism II
+224. Forbidden Cities
+224. Area of Rectangles
+224. Grid Completion
+224. Creating Offices
+224. Permutations II
+224. Functional Graph Distribution
+224. New Flight Routes
+224. Grid Path Construction
+
