@@ -98,6 +98,7 @@ code solutions/weird-algorithm/main.cpp
 55. [Increasing Subsequence](/solutions/increasing-subsequence/main.cpp)
 55. [Projects](/solutions/projects/main.cpp)
 55. [Elevator Rides](/solutions/elevator-rides/main.cpp)
+55. [Counting Tilings](/solutions/counting-tilings/main.cpp)
 
 
 <!-- ### Graph Algorithms -->
