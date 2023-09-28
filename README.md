@@ -93,6 +93,7 @@ code solutions/weird-algorithm/main.cpp
 55. [Edit Distance](/solutions/edit-distance/main.cpp)
 55. [Rectangle Cutting](/solutions/rectangle-cutting/main.cpp)
 55. [Money Sums](/solutions/money-sums/main.cpp)
+55. [Removal Game](/solutions/removal-game/main.cpp)
 
 
 <!-- ### Graph Algorithms -->
