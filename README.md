@@ -285,7 +285,7 @@ code solutions/weird-algorithm/main.cpp
 224. Acyclic Graph Edges
 224. Strongly Connected Edges
 224. Even Outdegree Edges
-224. Multiplication Table
+224. [Multiplication Table](/solutions/multiplication-table/main.cpp)
 224. Advertisement
 224. Special Substrings
 224. Permutation Inversions
