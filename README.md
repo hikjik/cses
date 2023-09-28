@@ -101,7 +101,10 @@ code solutions/weird-algorithm/main.cpp
 55. [Counting Tilings](/solutions/counting-tilings/main.cpp)
 55. [Counting Numbers](/solutions/counting-numbers/main.cpp)
 
-<!-- ### Graph Algorithms -->
+### Graph Algorithms
+
+74. [Counting Rooms](/solutions/counting-rooms/main.cpp)
+
 
 <!-- ### Range Queries -->
 
