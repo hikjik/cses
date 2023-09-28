@@ -89,6 +89,7 @@ code solutions/weird-algorithm/main.cpp
 55. [Grid Paths](/solutions/grid-paths-ii/main.cpp)
 55. [Book Shop](/solutions/book-shop/main.cpp)
 55. [Array Description](/solutions/array-description/main.cpp)
+55. [Counting Towers](/solutions/counting-towers/main.cpp)
 
 
 <!-- ### Graph Algorithms -->
