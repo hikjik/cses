@@ -99,7 +99,7 @@ code solutions/weird-algorithm/main.cpp
 55. [Projects](/solutions/projects/main.cpp)
 55. [Elevator Rides](/solutions/elevator-rides/main.cpp)
 55. [Counting Tilings](/solutions/counting-tilings/main.cpp)
-
+55. [Counting Numbers](/solutions/counting-numbers/main.cpp)
 
 <!-- ### Graph Algorithms -->
 
