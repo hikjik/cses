@@ -107,7 +107,7 @@ code solutions/weird-algorithm/main.cpp
 
 74. [Counting Rooms](/solutions/counting-rooms/main.cpp)
 74. [Labyrinth](/solutions/labyrinth/main.cpp)
-74. Building Roads
+74. [Building Roads](/solutions/building-roads/main.cpp)
 74. Message Route
 74. Building Teams
 74. Round Trip
