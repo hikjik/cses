@@ -92,6 +92,7 @@ code solutions/weird-algorithm/main.cpp
 55. [Counting Towers](/solutions/counting-towers/main.cpp)
 55. [Edit Distance](/solutions/edit-distance/main.cpp)
 55. [Rectangle Cutting](/solutions/rectangle-cutting/main.cpp)
+55. [Money Sums](/solutions/money-sums/main.cpp)
 
 
 <!-- ### Graph Algorithms -->
