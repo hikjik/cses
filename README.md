@@ -90,6 +90,7 @@ code solutions/weird-algorithm/main.cpp
 55. [Book Shop](/solutions/book-shop/main.cpp)
 55. [Array Description](/solutions/array-description/main.cpp)
 55. [Counting Towers](/solutions/counting-towers/main.cpp)
+55. [Edit Distance](/solutions/edit-distance/main.cpp)
 
 
 <!-- ### Graph Algorithms -->
