@@ -342,7 +342,7 @@ code solutions/weird-algorithm/main.cpp
 224. Number Grid
 224. Maximum Building II
 224. Filling Trominos
-224. Stick Divisions
+224. [Stick Divisions](/solutions/stick-divisions/main.cpp)
 224. Coding Company
 224. Flight Route Requests
 224. Two Stacks Sorting
