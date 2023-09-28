@@ -2,6 +2,8 @@
 
 Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), written in C++ by [hikjik](https://cses.fi/user/147386).
 
+<img title="Progress" alt="Progress" src="res/progress.webp">
+
 ## Generate problem template
 
 ```bash
