@@ -114,9 +114,10 @@ code solutions/weird-algorithm/main.cpp
 
 129. [Subordinates](/solutions/subordinates/main.cpp)
 
-<!-- ### Mathematics
+### Mathematics
 
-145. [Josephus Queries] -->
+145. Josephus Queries
+145. [Exponentiation](/solutions/exponentiation/main.cpp)
 
 <!-- ### String Algorithms -->
 
