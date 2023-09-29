@@ -281,7 +281,7 @@ code solutions/weird-algorithm/main.cpp
 224. Shortest Subsequence
 224. Counting Bits
 224. [Swap Game](/solutions/swap-game/main.cpp)
-224. Prüfer Code
+224. [Prüfer Code](/solutions/prufer-code/main.cpp)
 224. Acyclic Graph Edges
 224. Strongly Connected Edges
 224. Even Outdegree Edges
