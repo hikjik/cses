@@ -240,11 +240,11 @@ code solutions/weird-algorithm/main.cpp
 
 ### Geometry
 
-193. Point Location Test
-193. Line Segment Intersection
-193. Polygon Area
-193. Point in Polygon
-193. Polygon Lattice Points
+193. [Point Location Test](/solutions/point-location-test/main.cpp)
+193. [Line Segment Intersection](/solutions/line-segment-intersection/main.cpp)
+193. [Polygon Area](/solutions/polygon-area/main.cpp)
+193. [Point in Polygon](/solutions/point-in-polygon/main.cpp)
+193. [Polygon Lattice Points](/solutions/polygon-lattice-points/main.cpp)
 193. Minimum Euclidean Distance
 193. Convex Hull
 
