@@ -13,6 +13,11 @@ struct Point {
   int y;
 };
 
+std::istream &operator>>(std::istream &in, Point &p) {
+  in >> p.x >> p.y;
+  return in;
+}
+
 long long CrossProduct(const Point &a, const Point &b) {
   return 1LL * a.x * b.y - 1LL * a.y * b.x;
 }
@@ -33,7 +38,7 @@ int main() {
 
   std::vector<Point> polygon(n);
   for (auto &point : polygon) {
-    std::cin >> point.x >> point.y;
+    std::cin >> point;
   }
 
   std::cout << DoubledAreaOfPolygon(polygon) << "\n";
