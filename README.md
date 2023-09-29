@@ -1,6 +1,6 @@
 # CSES Solutions
 
-Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), written in C++ by [hikjik](https://cses.fi/user/147386).
+Accepted solutions to the [CSES Problem Set](https://cses.fi/problemset/), written in C++ by [hikjik](https://cses.fi/problemset/user/147386/).
 
 <img title="Progress" alt="Progress" src="res/progress.webp">
 
