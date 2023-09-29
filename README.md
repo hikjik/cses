@@ -280,12 +280,12 @@ code solutions/weird-algorithm/main.cpp
 
 224. Shortest Subsequence
 224. Counting Bits
-224. Swap Game
-224. Prüfer Code
+224. [Swap Game](/solutions/swap-game/main.cpp)
+224. [Prüfer Code](/solutions/prufer-code/main.cpp)
 224. Acyclic Graph Edges
 224. Strongly Connected Edges
 224. Even Outdegree Edges
-224. Multiplication Table
+224. [Multiplication Table](/solutions/multiplication-table/main.cpp)
 224. Advertisement
 224. Special Substrings
 224. Permutation Inversions
@@ -342,7 +342,7 @@ code solutions/weird-algorithm/main.cpp
 224. Number Grid
 224. Maximum Building II
 224. Filling Trominos
-224. Stick Divisions
+224. [Stick Divisions](/solutions/stick-divisions/main.cpp)
 224. Coding Company
 224. Flight Route Requests
 224. Two Stacks Sorting
