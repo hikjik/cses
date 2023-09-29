@@ -240,7 +240,7 @@ code solutions/weird-algorithm/main.cpp
 
 ### Geometry
 
-193. Point Location Test
+193. [Point Location Test](/solutions/point-location-test/main.cpp)
 193. Line Segment Intersection
 193. Polygon Area
 193. Point in Polygon
