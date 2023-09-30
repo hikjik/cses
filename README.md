@@ -115,7 +115,7 @@ code solutions/weird-algorithm/main.cpp
 74. [Shortest Routes I](/solutions/shortest-routes-i/main.cpp)
 74. [Shortest Routes II](/solutions/shortest-routes-ii/main.cpp)
 74. [High Score](/solutions/high-score/main.cpp)
-74. Flight Discount
+74. [Flight Discount](/solutions/flight-discount/main.cpp)
 74. [Cycle Finding](/solutions/cycle-finding/main.cpp)
 74. Flight Routes
 74. Round Trip II
