@@ -114,7 +114,7 @@ code solutions/weird-algorithm/main.cpp
 74. Monsters
 74. [Shortest Routes I](/solutions/shortest-routes-i/main.cpp)
 74. [Shortest Routes II](/solutions/shortest-routes-ii/main.cpp)
-74. High Score
+74. [High Score](/solutions/high-score/main.cpp)
 74. Flight Discount
 74. Cycle Finding
 74. Flight Routes
