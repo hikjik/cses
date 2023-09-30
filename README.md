@@ -111,7 +111,7 @@ code solutions/weird-algorithm/main.cpp
 74. [Message Route](/solutions/message-route/main.cpp)
 74. [Building Teams](/solutions/building-teams/main.cpp)
 74. [Round Trip](/solutions/round-trip/main.cpp)
-74. Monsters
+74. [Monsters](/solutions/monsters/main.cpp)
 74. [Shortest Routes I](/solutions/shortest-routes-i/main.cpp)
 74. [Shortest Routes II](/solutions/shortest-routes-ii/main.cpp)
 74. [High Score](/solutions/high-score/main.cpp)
