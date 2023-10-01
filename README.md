@@ -117,7 +117,7 @@ code solutions/weird-algorithm/main.cpp
 74. [High Score](/solutions/high-score/main.cpp)
 74. [Flight Discount](/solutions/flight-discount/main.cpp)
 74. [Cycle Finding](/solutions/cycle-finding/main.cpp)
-74. Flight Routes
+74. [Flight Routes](/solutions/flight-routes/main.cpp)
 74. [Round Trip II](/solutions/round-trip-ii/main.cpp)
 74. [Course Schedule](/solutions/course-schedule/main.cpp)
 74. Longest Flight Route
