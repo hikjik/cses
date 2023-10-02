@@ -127,7 +127,7 @@ code solutions/weird-algorithm/main.cpp
 74. Planets Queries II
 74. Planets Cycles
 74. [Road Reparation](/solutions/road-reparation/main.cpp)
-74. Road Construction
+74. [Road Construction](/solutions/road-construction/main.cpp)
 74. Flight Routes Check
 74. Planets and Kingdoms
 74. Giant Pizza
