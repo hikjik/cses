@@ -120,7 +120,7 @@ code solutions/weird-algorithm/main.cpp
 74. [Flight Routes](/solutions/flight-routes/main.cpp)
 74. [Round Trip II](/solutions/round-trip-ii/main.cpp)
 74. [Course Schedule](/solutions/course-schedule/main.cpp)
-74. Longest Flight Route
+74. [Longest Flight Route](/solutions/longest-flight-route/main.cpp)
 74. Game Routes
 74. Investigation
 74. Planets Queries I
