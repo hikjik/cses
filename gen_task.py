@@ -38,6 +38,8 @@ def create_task_folder(new_task_name: str, tests_count: int) -> None:
         with open(tests_path / f"output.{i+1}.txt", mode="a"):
             pass
 
+    print(f"Created {task_path / MAIN_FILE}")
+
 
 if __name__ == "__main__":
     parser = ArgumentParser()
