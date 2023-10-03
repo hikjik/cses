@@ -96,15 +96,54 @@ void DepthFirstSearch(int u, const std::vector<int> &successors,
 
 class SuccessorGraph {
 public:
-  SuccessorGraph(int n, const std::vector<int> &destinations) : vertexes_(n) {
+  SuccessorGraph(int n, const std::vector<int> &destinations)
+      : successors_(kLogMaxSteps, std::vector<int>(n)), vertexes_(n) {
+    InitializeBinaryJumpingArrays(n, destinations);
     ExploreGraph(n, destinations);
   }
 
   int CycleId(int u) const { return vertexes_[u].cycle_id; }
   int DistanceToCycle(int u) const { return vertexes_[u].distance_to_cycle; }
+  int IndexOnCycle(int u) const { return vertexes_[u].index_on_cycle; }
   int CycleSize(int u) const { return cycles_[CycleId(u)].size; }
 
+  int Advance(int u, int steps) const {
+    auto x = u;
+    for (int i = 0; i < kLogMaxSteps; ++i) {
+      if ((steps >> i) & 1) {
+        x = successors_[i][x];
+      }
+    }
+    return x;
+  }
+
+  int Distance(int u, int v) const {
+    if (CycleId(u) != CycleId(v)) {
+      return -1;
+    }
+
+    if (IsOnTree(v)) {
+      if (IsOnCycle(u)) {
+        return -1;
+      }
+      const auto d = DistanceToCycle(u) - DistanceToCycle(v);
+      return d < 0 || Advance(u, d) != v ? -1 : d;
+    }
+
+    const auto d = DistanceToCycle(u);
+    u = Advance(u, d);
+    if (IndexOnCycle(u) <= IndexOnCycle(v)) {
+      return d + IndexOnCycle(v) - IndexOnCycle(u);
+    }
+    return d + CycleSize(u) - IndexOnCycle(u) + IndexOnCycle(v);
+  }
+
 private:
+  const int kLogMaxSteps = 18;
+
+  bool IsOnCycle(int u) const { return vertexes_[u].distance_to_cycle == 0; }
+  bool IsOnTree(int u) const { return !IsOnCycle(u); }
+
   void ExploreGraph(int n, const std::vector<int> &destinations) {
     std::vector<Color> colors(n, Color::kWhite);
     Visitor visitor(n, &vertexes_, &cycles_);
@@ -116,15 +155,28 @@ private:
     }
   }
 
+  void InitializeBinaryJumpingArrays(int n,
+                                     const std::vector<int> &destinations) {
+    successors_[0] = destinations;
+    for (int i = 1; i < kLogMaxSteps; ++i) {
+      for (int u = 0; u < n; ++u) {
+        successors_[i][u] = successors_[i - 1][successors_[i - 1][u]];
+      }
+    }
+  }
+
+  std::vector<std::vector<int>> successors_;
   std::vector<Vertex> vertexes_;
   std::vector<Cycle> cycles_;
 };
 
+#include <random>
+
 int main() {
   fast_io();
 
-  int n;
-  std::cin >> n;
+  int n, q;
+  std::cin >> n >> q;
 
   std::vector<int> destinations(n);
   for (auto &a : destinations) {
@@ -134,10 +186,12 @@ int main() {
 
   const auto graph = SuccessorGraph(n, destinations);
 
-  for (int u = 0; u < n; ++u) {
-    std::cout << graph.DistanceToCycle(u) + graph.CycleSize(u) << " ";
+  while (q--) {
+    int u, v;
+    std::cin >> u >> v;
+
+    std::cout << graph.Distance(u - 1, v - 1) << "\n";
   }
-  std::cout << "\n";
 
   return 0;
 }
