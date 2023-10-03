@@ -7,36 +7,54 @@ void fast_io() {
   std::cout.tie(NULL);
 }
 
+class SuccessorGraph {
+private:
+  const int kLogMaxSteps = 30;
+
+  std::vector<std::vector<int>> successors_;
+
+public:
+  SuccessorGraph(int n, const std::vector<int> &destinations)
+      : successors_(kLogMaxSteps, std::vector<int>(n)) {
+    successors_[0] = destinations;
+
+    for (int i = 1; i < kLogMaxSteps; ++i) {
+      for (int u = 0; u < n; ++u) {
+        successors_[i][u] = successors_[i - 1][successors_[i - 1][u]];
+      }
+    }
+  }
+
+  int Advance(int source, int steps) const {
+    auto x = source;
+    for (int i = 0; i < kLogMaxSteps; ++i) {
+      if ((steps >> i) & 1) {
+        x = successors_[i][x];
+      }
+    }
+    return x;
+  }
+};
+
 int main() {
   fast_io();
 
   int n, q;
   std::cin >> n >> q;
 
-  const int kLogMaxK = 30;
-
-  std::vector successors(kLogMaxK, std::vector<int>(n + 1));
-  for (int u = 1; u <= n; ++u) {
-    std::cin >> successors[0][u];
+  std::vector<int> destinations(n);
+  for (auto &a : destinations) {
+    std::cin >> a;
+    --a;
   }
 
-  for (int i = 1; i < kLogMaxK; ++i) {
-    for (int u = 1; u <= n; ++u) {
-      successors[i][u] = successors[i - 1][successors[i - 1][u]];
-    }
-  }
+  auto graph = SuccessorGraph(n, destinations);
 
   while (q--) {
     int x, k;
     std::cin >> x >> k;
 
-    for (int i = 0; i < kLogMaxK; ++i) {
-      if ((k >> i) & 1) {
-        x = successors[i][x];
-      }
-    }
-
-    std::cout << x << "\n";
+    std::cout << graph.Advance(x - 1, k) + 1 << "\n";
   }
 
   return 0;
