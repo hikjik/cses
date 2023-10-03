@@ -125,7 +125,7 @@ code solutions/weird-algorithm/main.cpp
 74. Investigation
 74. [Planets Queries I](/solutions/planets-queries-i/main.cpp)
 74. Planets Queries II
-74. Planets Cycles
+74. [Planets Cycles](/solutions/planets-cycles/main.cpp)
 74. [Road Reparation](/solutions/road-reparation/main.cpp)
 74. [Road Construction](/solutions/road-construction/main.cpp)
 74. Flight Routes Check
