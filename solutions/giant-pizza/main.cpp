@@ -192,7 +192,6 @@ std::vector<int> GetVerticesInTopologicalOrder(const Graph &graph) {
     }
   }
 
-  std::reverse(order.begin(), order.end());
   return order;
 }
 
@@ -209,7 +208,7 @@ CalculateSelectionOfToppings(int m, const Graph &graph,
       const auto i = u / 2;
       if (!visited[i]) {
         visited[i] = true;
-        toppings[i] = u & 1 ? '-' : '+';
+        toppings[i] = u & 1 ? '+' : '-';
       }
     }
   }
