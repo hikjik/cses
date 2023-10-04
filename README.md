@@ -131,7 +131,7 @@ code solutions/weird-algorithm/main.cpp
 74. [Flight Routes Check](/solutions/flight-routes-check/main.cpp)
 74. [Planets and Kingdoms](/solutions/planets-and-kingdoms/main.cpp)
 74. [Giant Pizza](/solutions/giant-pizza/main.cpp)
-74. Coin Collector
+74. [Coin Collector](/solutions/coin-collector/main.cpp)
 74. Mail Delivery
 74. De Bruijn Sequence
 74. Teleporters Path
