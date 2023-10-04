@@ -133,7 +133,7 @@ code solutions/weird-algorithm/main.cpp
 74. [Giant Pizza](/solutions/giant-pizza/main.cpp)
 74. [Coin Collector](/solutions/coin-collector/main.cpp)
 74. [Mail Delivery](/solutions/mail-delivery/main.cpp)
-74. De Bruijn Sequence
+74. [De Bruijn Sequence](/solutions/de-bruijn-sequence/main.cpp)
 74. Teleporters Path
 74. Hamiltonian Flights
 74. Knight's Tour
