@@ -93,7 +93,7 @@ int GetTarget(const FlowGraph &graph, int edge_id) {
 }
 
 struct Path {
-  Path(size_t vertex_count, int source, int sink)
+  explicit Path(size_t vertex_count, int source, int sink)
       : incoming_edge_id(vertex_count), source(source), sink(sink) {}
 
   std::vector<int> incoming_edge_id;
@@ -163,35 +163,32 @@ long long ComputeMaxFlow(FlowGraph &graph, int source, int sink) {
   return flow;
 }
 
-std::vector<FlowGraph::Edge>
-ComputeMaximumMatchings(int n, int m,
-                        const std::vector<std::pair<int, int>> &pairs) {
-  FlowGraph graph(n + m + 2);
-  for (const auto &[u, v] : pairs) {
-    graph.AddEdge(u, v + n, 1);
-  }
-  for (int u = 1; u <= n; ++u) {
-    graph.AddEdge(0, u, 1);
-  }
-  for (int v = 1; v <= m; ++v) {
-    graph.AddEdge(v + n, m + n + 1, 1);
-  }
+std::vector<std::vector<int>> ComputeEdgeDisjointPaths(int n, int m,
+                                                       FlowGraph &graph) {
+  const int source = 0, sink = n - 1;
+  const auto flow = ComputeMaxFlow(graph, source, sink);
 
-  const auto flow = ComputeMaxFlow(graph, 0, n + m + 1);
-
-  std::vector<FlowGraph::Edge> edges;
-  edges.reserve(flow);
-
-  for (int i = 1; i <= n; ++i) {
-    for (auto edge_id : graph.GetEdgesIds(i)) {
-      const auto edge = graph.GetEdge(edge_id);
-      if (!(edge_id & 1) && edge.flow) {
-        edges.push_back(edge);
+  std::vector<std::unordered_set<int>> adj_edges_ids(n);
+  for (int u = 0; u < n; ++u) {
+    for (auto edge_id : graph.GetEdgesIds(u)) {
+      if (!(edge_id & 1) && graph.GetEdge(edge_id).flow) {
+        adj_edges_ids[u].insert(edge_id);
       }
     }
   }
 
-  return edges;
+  std::vector<std::vector<int>> paths;
+  for (int i = 0; i < flow; ++i) {
+    std::vector<int> path{source};
+    for (int u = source; u != sink;) {
+      const auto edge_id = *adj_edges_ids[u].begin();
+      adj_edges_ids[u].erase(edge_id);
+      u = graph.GetEdge(edge_id).to;
+      path.push_back(u);
+    }
+    paths.push_back(path);
+  }
+  return paths;
 }
 
 void FastIO() {
@@ -202,19 +199,25 @@ void FastIO() {
 int main() {
   FastIO();
 
-  int n, m, k;
-  std::cin >> n >> m >> k;
+  int n, m;
+  std::cin >> n >> m;
 
-  std::vector<std::pair<int, int>> pairs(k);
-  for (auto &[from, to] : pairs) {
-    std::cin >> from >> to;
+  FlowGraph graph(n);
+  for (int i = 0; i < m; ++i) {
+    int a, b;
+    std::cin >> a >> b;
+
+    graph.AddEdge(a - 1, b - 1, 1);
   }
 
-  const auto edges = ComputeMaximumMatchings(n, m, pairs);
-
-  std::cout << edges.size() << "\n";
-  for (const auto &edge : edges) {
-    std::cout << edge.from << " " << edge.to - n << "\n";
+  const auto paths = ComputeEdgeDisjointPaths(n, m, graph);
+  std::cout << paths.size() << "\n";
+  for (const auto &path : paths) {
+    std::cout << path.size() << "\n";
+    for (auto u : path) {
+      std::cout << u + 1 << " ";
+    }
+    std::cout << "\n";
   }
 
   return 0;
