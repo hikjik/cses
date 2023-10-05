@@ -137,7 +137,7 @@ code solutions/weird-algorithm/main.cpp
 74. [Teleporters Path](/solutions/teleporters-path/main.cpp)
 74. [Hamiltonian Flights](/solutions/hamiltonian-flights/main.cpp)
 74. [Knight's Tour](/solutions/knights-tour/main.cpp)
-74. Download Speed
+74. [Download Speed](/solutions/download-speed/main.cpp)
 74. Police Chase
 74. School Dance
 74. Distinct Routes
