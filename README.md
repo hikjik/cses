@@ -140,7 +140,7 @@ code solutions/weird-algorithm/main.cpp
 74. [Download Speed](/solutions/download-speed/main.cpp)
 74. Police Chase
 74. [School Dance](/solutions/school-dance/main.cpp)
-74. Distinct Routes
+74. [Distinct Routes](/solutions/distinct-routes/main.cpp)
 
 ### Range Queries
 

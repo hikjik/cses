@@ -93,7 +93,7 @@ int GetTarget(const FlowGraph &graph, int edge_id) {
 }
 
 struct Path {
-  explicit Path(size_t vertex_count, int source, int sink)
+  Path(size_t vertex_count, int source, int sink)
       : incoming_edge_id(vertex_count), source(source), sink(sink) {}
 
   std::vector<int> incoming_edge_id;
@@ -102,8 +102,7 @@ struct Path {
 
 class PathFinder : public BreadthFirstSearchVisitor<FlowGraph, int, int> {
 public:
-  explicit PathFinder(Path *path, std::vector<int> *capacity,
-                      bool *is_sink_reachable)
+  PathFinder(Path *path, std::vector<int> *capacity, bool *is_sink_reachable)
       : path_(*path), capacity_(*capacity),
         is_sink_reachable_(*is_sink_reachable) {}
 
