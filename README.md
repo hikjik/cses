@@ -135,7 +135,7 @@ code solutions/weird-algorithm/main.cpp
 74. [Mail Delivery](/solutions/mail-delivery/main.cpp)
 74. [De Bruijn Sequence](/solutions/de-bruijn-sequence/main.cpp)
 74. [Teleporters Path](/solutions/teleporters-path/main.cpp)
-74. Hamiltonian Flights
+74. [Hamiltonian Flights](/solutions/hamiltonian-flights/main.cpp)
 74. Knight's Tour
 74. Download Speed
 74. Police Chase
