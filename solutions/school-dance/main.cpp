@@ -68,6 +68,8 @@ public:
 
   const Edge &GetEdge(int id) const { return edges_[id]; }
 
+  bool IsOriginalEdge(int id) const { return !(id & 1); }
+
   void AddFlow(int id, int flow) {
     edges_[id].flow += flow;
     edges_[id ^ 1].flow -= flow;
@@ -156,7 +158,7 @@ long long ComputeMaxFlow(FlowGraph &graph, int source, int sink) {
 
   long long flow = 0;
   for (int edge_id : graph.GetEdgesIds(source)) {
-    if (!(edge_id & 1)) {
+    if (graph.IsOriginalEdge(edge_id)) {
       flow += graph.GetEdge(edge_id).flow;
     }
   }
@@ -185,7 +187,7 @@ ComputeMaximumMatchings(int n, int m,
   for (int i = 1; i <= n; ++i) {
     for (auto edge_id : graph.GetEdgesIds(i)) {
       const auto edge = graph.GetEdge(edge_id);
-      if (!(edge_id & 1) && edge.flow) {
+      if (graph.IsOriginalEdge(edge_id) && edge.flow) {
         edges.push_back(edge);
       }
     }

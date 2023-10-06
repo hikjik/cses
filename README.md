@@ -138,7 +138,7 @@ code solutions/weird-algorithm/main.cpp
 74. [Hamiltonian Flights](/solutions/hamiltonian-flights/main.cpp)
 74. [Knight's Tour](/solutions/knights-tour/main.cpp)
 74. [Download Speed](/solutions/download-speed/main.cpp)
-74. Police Chase
+74. [Police Chase](/solutions/police-chase/main.cpp)
 74. [School Dance](/solutions/school-dance/main.cpp)
 74. [Distinct Routes](/solutions/distinct-routes/main.cpp)
 
