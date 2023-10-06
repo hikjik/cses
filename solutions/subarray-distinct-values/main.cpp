@@ -2,14 +2,13 @@
 #include <unordered_map>
 #include <vector>
 
-void fast_io() {
+void FastIO() {
   std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
 }
 
 int main() {
-  fast_io();
+  FastIO();
 
   int n, k;
   std::cin >> n >> k;
@@ -25,7 +24,7 @@ int main() {
   int i = 0, j = 0;
   while (j < n) {
     ++uniq[arr[j]];
-    while (uniq.size() > k) {
+    while (uniq.size() > k * 1ULL) {
       ans += j - i;
       if (!--uniq[arr[i]]) {
         uniq.erase(arr[i]);

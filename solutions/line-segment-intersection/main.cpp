@@ -1,12 +1,6 @@
 #include <algorithm>
 #include <iostream>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 template <typename T> int Sign(T value) {
   return (T(0) < value) - (value < T(0));
 }
@@ -58,8 +52,13 @@ bool IsIntersect(const Segment &s1, const Segment &s2) {
          IsPointOnSegment(s2.p, s1) || IsPointOnSegment(s2.q, s1);
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int t;
   std::cin >> t;

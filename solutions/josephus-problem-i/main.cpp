@@ -2,14 +2,13 @@
 #include <numeric>
 #include <vector>
 
-void fast_io() {
+void FastIO() {
   std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
 }
 
 int main() {
-  fast_io();
+  FastIO();
 
   int n;
   std::cin >> n;

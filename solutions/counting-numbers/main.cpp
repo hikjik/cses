@@ -2,12 +2,6 @@
 #include <iostream>
 #include <string>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 long long DP[20][10][2][2];
 
 long long CountNumbers(const std::string &number, size_t n, int previous_digit,
@@ -42,8 +36,13 @@ long long CountNumbers(long long number) {
   return CountNumbers(number_str, number_str.size(), -1, 1, 1);
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   long long a, b;
   std::cin >> a >> b;

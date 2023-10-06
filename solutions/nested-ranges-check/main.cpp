@@ -5,12 +5,6 @@
 #include <tuple>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 void PrintArray(const std::vector<int> &nums) {
   for (auto a : nums) {
     std::cout << a << " ";
@@ -18,8 +12,13 @@ void PrintArray(const std::vector<int> &nums) {
   std::cout << "\n";
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n;
   std::cin >> n;

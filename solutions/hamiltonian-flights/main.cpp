@@ -1,12 +1,6 @@
 #include <iostream>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 const int kMod = 1e9 + 7;
 
 int CountHamiltonianPath(const std::vector<std::vector<int>> &revered_graph) {
@@ -39,8 +33,13 @@ int CountHamiltonianPath(const std::vector<std::vector<int>> &revered_graph) {
   return dp[dst][(1 << n) - 1];
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n, m;
   std::cin >> n >> m;
