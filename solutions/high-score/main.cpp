@@ -21,7 +21,6 @@ std::vector<bool> GetReachableVertexes(int source, const Graph &graph) {
   return visited;
 }
 
-// Bellman–Ford algorithm
 std::vector<long long>
 ComputeDistances(int vertex_count, int source,
                  const std::vector<WeightedEdge> &edges) {
