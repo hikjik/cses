@@ -5,8 +5,7 @@
 
 using Graph = std::vector<std::vector<int>>;
 
-std::vector<int> ComputeLongestFlightRoute(int source, int target,
-                                           const Graph &graph) {
+std::vector<int> TopologicalSort(const std::vector<std::vector<int>> &graph) {
   const int n = graph.size();
 
   std::vector<int> in_degree(n);
@@ -23,23 +22,39 @@ std::vector<int> ComputeLongestFlightRoute(int source, int target,
     }
   }
 
+  std::vector<int> vertices;
+  while (!queue.empty()) {
+    const auto u = queue.front();
+    queue.pop();
+
+    vertices.push_back(u);
+    for (auto v : graph[u]) {
+      if (!--in_degree[v]) {
+        queue.push(v);
+      }
+    }
+  }
+
+  if (vertices.size() != graph.size()) {
+    return {};
+  }
+  return vertices;
+}
+
+std::vector<int> ComputeLongestFlightRoute(int source, int target,
+                                           const Graph &graph) {
+  const int n = graph.size();
+
   std::vector<int> predecessors(n, -1);
 
   std::vector<int> distances(n, -1);
   distances[source] = 0;
 
-  while (!queue.empty()) {
-    auto u = queue.front();
-    queue.pop();
-
+  for (auto u : TopologicalSort(graph)) {
     for (auto v : graph[u]) {
       if (distances[u] != -1 && distances[v] < distances[u] + 1) {
         distances[v] = distances[u] + 1;
         predecessors[v] = u;
-      }
-
-      if (!--in_degree[v]) {
-        queue.push(v);
       }
     }
   }
