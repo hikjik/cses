@@ -1,25 +1,10 @@
 #include <iostream>
+#include <optional>
 #include <queue>
 #include <vector>
 
-std::vector<std::vector<int>> ReadGraph() {
-  int n, m;
-  std::cin >> n >> m;
-
-  std::vector<std::vector<int>> graph(n);
-  while (m--) {
-    int a, b;
-    std::cin >> a >> b;
-
-    graph[a - 1].push_back(b - 1);
-    graph[b - 1].push_back(a - 1);
-  }
-
-  return graph;
-}
-
-std::pair<bool, std::vector<int>>
-IsBipartite(const std::vector<std::vector<int>> &graph) {
+std::optional<std::vector<int>>
+BipartiteGraph(const std::vector<std::vector<int>> &graph) {
   const int n = graph.size();
 
   std::vector<int> colors(n);
@@ -37,7 +22,7 @@ IsBipartite(const std::vector<std::vector<int>> &graph) {
 
       for (auto v : graph[u]) {
         if (colors[v] == colors[u]) {
-          return {false, {}};
+          return std::nullopt;
         }
         if (!colors[v]) {
           colors[v] = 3 - colors[u];
@@ -47,7 +32,7 @@ IsBipartite(const std::vector<std::vector<int>> &graph) {
     }
   }
 
-  return {true, colors};
+  return colors;
 }
 
 void FastIO() {
@@ -58,16 +43,26 @@ void FastIO() {
 int main() {
   FastIO();
 
-  const auto graph = ReadGraph();
+  int n, m;
+  std::cin >> n >> m;
 
-  const auto [is_bipartite, colors] = IsBipartite(graph);
+  std::vector<std::vector<int>> graph(n);
+  while (m--) {
+    int a, b;
+    std::cin >> a >> b;
 
-  if (!is_bipartite) {
+    graph[a - 1].push_back(b - 1);
+    graph[b - 1].push_back(a - 1);
+  }
+
+  const auto colors = BipartiteGraph(graph);
+
+  if (!colors) {
     std::cout << "IMPOSSIBLE\n";
     return 0;
   }
 
-  for (auto c : colors) {
+  for (auto c : *colors) {
     std::cout << c << " ";
   }
   std::cout << "\n";
