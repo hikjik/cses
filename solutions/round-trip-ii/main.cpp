@@ -2,12 +2,6 @@
 #include <iostream>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 using Graph = std::vector<std::vector<int>>;
 
 Graph ReadGraph() {
@@ -82,8 +76,13 @@ std::vector<int> FindAnyCycle(const Graph &graph) {
   return visitor.Cycle();
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   const auto cycle = FindAnyCycle(ReadGraph());
 

@@ -1,12 +1,6 @@
 #include <iostream>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 void DepthFirstSearch(int u, const std::vector<std::vector<int>> &graph,
                       std::vector<int> *subtree_size) {
   (*subtree_size)[u] = 1;
@@ -16,8 +10,13 @@ void DepthFirstSearch(int u, const std::vector<std::vector<int>> &graph,
   }
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n;
   std::cin >> n;

@@ -4,12 +4,6 @@
 #include <unordered_set>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 int MinimumNumbersOfMoves(const std::string &source,
                           const std::string &target) {
   static const std::vector<std::pair<int, int>> swaps{
@@ -45,8 +39,13 @@ int MinimumNumbersOfMoves(const std::string &source,
   throw;
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   std::string target = "123456789", source = target;
   for (auto &c : source) {

@@ -2,12 +2,6 @@
 #include <queue>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 std::vector<std::pair<int, int>>
 ConvertPruferCodeToTree(const std::vector<int> &code) {
   const int vertex_count = code.size() + 2;
@@ -41,8 +35,13 @@ ConvertPruferCodeToTree(const std::vector<int> &code) {
   return edges;
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n;
   std::cin >> n;

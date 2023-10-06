@@ -4,12 +4,6 @@
 #include <iostream>
 #include <tuple>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 const int kN = 8;
 using Board = std::array<std::array<int, kN>, kN>;
 
@@ -61,8 +55,13 @@ Board KnightTour(int x, int y) {
   return board;
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int x, y;
   std::cin >> x >> y;

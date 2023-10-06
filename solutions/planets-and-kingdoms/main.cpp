@@ -4,12 +4,6 @@
 #include <unordered_map>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 using Graph = std::vector<std::vector<int>>;
 
 template <typename T> class Partition {
@@ -146,8 +140,13 @@ Partition<int> FindStronglyConnectedComponent(const Graph &graph) {
   return builder.Build();
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n, m;
   std::cin >> n >> m;

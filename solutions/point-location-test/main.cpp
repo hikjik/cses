@@ -1,11 +1,5 @@
 #include <iostream>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 struct Point {
   int x;
   int y;
@@ -24,8 +18,13 @@ long long CrossProduct(const Point &a, const Point &b) {
   return 1LL * a.x * b.y - 1LL * a.y * b.x;
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int t;
   std::cin >> t;

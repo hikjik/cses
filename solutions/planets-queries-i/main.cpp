@@ -1,12 +1,6 @@
 #include <iostream>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 class SuccessorGraph {
 private:
   const int kLogMaxSteps = 30;
@@ -36,8 +30,13 @@ public:
   }
 };
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n, q;
   std::cin >> n >> q;

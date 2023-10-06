@@ -4,12 +4,6 @@
 #include <string>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 std::vector<std::vector<int>> BuildDeBruijnGraph(int m) {
   const int n = 1 << (m - 1);
 
@@ -51,8 +45,13 @@ std::string BuildDeBruijnSequence(int n) {
   return ss.str();
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n;
   std::cin >> n;

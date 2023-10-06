@@ -5,12 +5,6 @@
 #include <tuple>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 bool IsOnBoundary(int i, int j, int n, int m) {
   return i == 0 || i == n - 1 || j == 0 || j == m - 1;
 }
@@ -84,8 +78,13 @@ GetEscapeRoute(const std::vector<std::string> &grid) {
   return std::nullopt;
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n, m;
   std::cin >> n >> m;

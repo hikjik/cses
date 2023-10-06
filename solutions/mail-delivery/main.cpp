@@ -4,12 +4,6 @@
 #include <unordered_set>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 using Graph = std::vector<std::vector<int>>;
 
 std::optional<std::vector<int>> ConstructEulerianCircuit(int source,
@@ -51,8 +45,13 @@ std::optional<std::vector<int>> ConstructEulerianCircuit(int source,
   return circuit;
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n, m;
   std::cin >> n >> m;

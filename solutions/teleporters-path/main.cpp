@@ -3,11 +3,6 @@
 #include <stack>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
 using Graph = std::vector<std::vector<int>>;
 
 std::optional<std::vector<int>> ConstructEulerianTrail(int src, int dst,
@@ -50,8 +45,13 @@ std::optional<std::vector<int>> ConstructEulerianTrail(int src, int dst,
   return trail;
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n, m;
   std::cin >> n >> m;

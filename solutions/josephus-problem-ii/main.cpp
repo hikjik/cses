@@ -9,14 +9,13 @@ template <class T>
 using ordered_set = tree<T, null_type, std::less<T>, rb_tree_tag,
                          tree_order_statistics_node_update>;
 
-void fast_io() {
+void FastIO() {
   std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
 }
 
 int main() {
-  fast_io();
+  FastIO();
 
   int n, k;
   std::cin >> n >> k;

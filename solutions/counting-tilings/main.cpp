@@ -1,12 +1,6 @@
 #include <iostream>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 void CountingTilings(int i, int j, int k, int l, int n,
                      std::vector<std::vector<int>> &dp) {
   static const int kMod = 1e9 + 7;
@@ -29,15 +23,17 @@ void CountingTilings(int i, int j, int k, int l, int n,
   CountingTilings(i, j + 1, k, l ^ (1 << j), n, dp);
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n, m;
   std::cin >> n >> m;
 
-  // dp[i][k] - number of ways to fully cover first i−1 columns and have a
-  // mask k on the ith column where every set bit in k corresponds to an already
-  // occupied cell and unset bit to unoccupied cells.
   std::vector dp(m + 1, std::vector<int>(1 << n));
   dp[0][0] = 1;
 

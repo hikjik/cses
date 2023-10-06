@@ -11,12 +11,6 @@ template <class T>
 using ordered_set = tree<T, null_type, std::less<T>, rb_tree_tag,
                          tree_order_statistics_node_update>;
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 void PrintArray(const std::vector<int> &nums) {
   for (auto a : nums) {
     std::cout << a << " ";
@@ -24,8 +18,13 @@ void PrintArray(const std::vector<int> &nums) {
   std::cout << "\n";
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n;
   std::cin >> n;

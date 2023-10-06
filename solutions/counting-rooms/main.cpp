@@ -2,12 +2,6 @@
 #include <string>
 #include <vector>
 
-void fast_io() {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(NULL);
-  std::cout.tie(NULL);
-}
-
 void dfs(int i, int j, int n, int m, const std::vector<std::string> &grid,
          std::vector<std::vector<bool>> *visited) {
   static const std::vector<std::pair<int, int>> directions{
@@ -24,8 +18,13 @@ void dfs(int i, int j, int n, int m, const std::vector<std::string> &grid,
   }
 }
 
+void FastIO() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr), std::cout.tie(nullptr);
+}
+
 int main() {
-  fast_io();
+  FastIO();
 
   int n, m;
   std::cin >> n >> m;
