@@ -4,7 +4,6 @@
 
 using WeightedGraph = std::vector<std::vector<std::pair<int, int>>>;
 
-// Dijkstra’s algorithm
 std::vector<long long> Distances(int source, const WeightedGraph &graph) {
   static const long long kInf = 0x3f3f3f3f3f3f3f3f;
   const int n = graph.size();

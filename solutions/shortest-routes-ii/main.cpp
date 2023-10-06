@@ -4,7 +4,6 @@
 
 using WeightedGraph = std::vector<std::vector<std::pair<int, int>>>;
 
-// Floyd–Warshall algorithm
 std::vector<std::vector<long long>> Distances(const WeightedGraph &graph) {
   static const long long kInf = 0x3f3f3f3f3f3f3f3f;
   const int n = graph.size();
