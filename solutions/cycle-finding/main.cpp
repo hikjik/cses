@@ -2,7 +2,6 @@
 #include <tuple>
 #include <vector>
 
-// Bellman–Ford algorithm
 std::vector<int> FindCycle(int n, int source,
                            std::vector<std::tuple<int, int, int>> &edges) {
   static const long long kInf = 0x3f3f3f3f3f3f3f3f;
