@@ -68,6 +68,8 @@ public:
 
   const Edge &GetEdge(int id) const { return edges_[id]; }
 
+  bool IsOriginalEdge(int id) const { return !(id & 1); }
+
   void AddFlow(int id, int flow) {
     edges_[id].flow += flow;
     edges_[id ^ 1].flow -= flow;
@@ -156,7 +158,7 @@ long long ComputeMaxFlow(FlowGraph &graph, int source, int sink) {
 
   long long flow = 0;
   for (int edge_id : graph.GetEdgesIds(source)) {
-    if (!(edge_id & 1)) {
+    if (graph.IsOriginalEdge(edge_id)) {
       flow += graph.GetEdge(edge_id).flow;
     }
   }
@@ -171,7 +173,7 @@ std::vector<std::vector<int>> ComputeEdgeDisjointPaths(int n, int m,
   std::vector<std::unordered_set<int>> adj_edges_ids(n);
   for (int u = 0; u < n; ++u) {
     for (auto edge_id : graph.GetEdgesIds(u)) {
-      if (!(edge_id & 1) && graph.GetEdge(edge_id).flow) {
+      if (graph.IsOriginalEdge(edge_id) && graph.GetEdge(edge_id).flow) {
         adj_edges_ids[u].insert(edge_id);
       }
     }

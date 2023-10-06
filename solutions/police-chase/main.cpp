@@ -127,6 +127,20 @@ private:
   bool &is_sink_reachable_;
 };
 
+class ReachableVertexFinder
+    : public BreadthFirstSearchVisitor<FlowGraph, int, int> {
+public:
+  ReachableVertexFinder(std::unordered_set<int> *reachable)
+      : reachable_(*reachable) {}
+
+  void DiscoverVertex(int vertex, const FlowGraph &graph) override {
+    reachable_.insert(vertex);
+  }
+
+private:
+  std::unordered_set<int> &reachable_;
+};
+
 void PushFlow(FlowGraph &graph, const Path &path, int flow) {
   auto vertex = path.sink;
   while (vertex != path.source) {
@@ -153,16 +167,24 @@ void BuildMaxFlow(FlowGraph &graph, int source, int sink) {
   } while (is_sink_reachable);
 }
 
-long long ComputeMaxFlow(FlowGraph &graph, int source, int sink) {
+std::vector<FlowGraph::Edge> ComputeMinCut(FlowGraph &graph, int source,
+                                           int sink) {
   BuildMaxFlow(graph, source, sink);
 
-  long long flow = 0;
-  for (int edge_id : graph.GetEdgesIds(source)) {
-    if (graph.IsOriginalEdge(edge_id)) {
-      flow += graph.GetEdge(edge_id).flow;
+  std::unordered_set<int> reachable;
+  ReachableVertexFinder visitor(&reachable);
+  BreadthFirstSearch(source, graph, visitor);
+
+  std::vector<FlowGraph::Edge> edges;
+  for (auto u : reachable) {
+    for (auto edge_id : graph.GetEdgesIds(u)) {
+      const auto edge = graph.GetEdge(edge_id);
+      if (graph.IsOriginalEdge(edge_id) && !reachable.contains(edge.to)) {
+        edges.push_back(edge);
+      }
     }
   }
-  return flow;
+  return edges;
 }
 
 void FastIO() {
@@ -178,13 +200,18 @@ int main() {
 
   FlowGraph graph(n);
   while (m--) {
-    int a, b, c;
-    std::cin >> a >> b >> c;
+    int a, b;
+    std::cin >> a >> b;
 
-    graph.AddEdge(a - 1, b - 1, c);
+    graph.AddEdge(a - 1, b - 1, 1);
+    graph.AddEdge(b - 1, a - 1, 1);
   }
 
-  std::cout << ComputeMaxFlow(graph, 0, n - 1) << "\n";
+  const auto edges = ComputeMinCut(graph, 0, n - 1);
+  std::cout << edges.size() << "\n";
+  for (const auto &edge : edges) {
+    std::cout << edge.from + 1 << " " << edge.to + 1 << "\n";
+  }
 
   return 0;
 }
