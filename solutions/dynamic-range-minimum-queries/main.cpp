@@ -8,24 +8,31 @@ void FastIO() {
   std::cin.tie(nullptr), std::cout.tie(nullptr);
 }
 
-template <typename Iterator, typename ValueType, typename BinaryOp>
-class SegmentTree {
+template <typename ValueType, typename BinaryOp> class SegmentTree {
 public:
-  SegmentTree(Iterator first, Iterator last, ValueType init, BinaryOp op)
-      : size_(std::distance(first, last)), data_(2 * size_), op_(op),
-        init_(init) {
+  SegmentTree(size_t size, BinaryOp op, ValueType init)
+      : size_(size), data_(2 * size_), op_(op), init_(init) {}
+
+  template <typename Iterator>
+  SegmentTree(Iterator first, Iterator last, BinaryOp op, ValueType init)
+      : SegmentTree(std::distance(first, last), op, init) {
     std::copy(first, last, data_.begin() + size_);
     for (int i = size_ - 1; i > 0; --i) {
       data_[i] = op_(data_[i << 1], data_[i << 1 | 1]);
     }
   }
 
-  void Modify(size_t idx, ValueType value) {
-    for (data_[idx += size_] = value; idx > 1; idx >>= 1) {
-      data_[idx >> 1] = op_(data_[idx], data_[idx ^ 1]);
-    }
+  void Set(size_t idx, ValueType value) {
+    data_[idx += size_] = value;
+    Update(idx);
   }
 
+  void Add(size_t idx, ValueType delta) {
+    data_[idx += size_] += delta;
+    Update(idx);
+  }
+
+  // process a range query on interval [left, right]
   ValueType RangeQuery(size_t left, size_t right) {
     auto res = init_;
     for (left += size_, right += size_ + 1; left < right;
@@ -41,6 +48,12 @@ public:
   }
 
 private:
+  void Update(size_t idx) {
+    for (int i = idx; i > 1; i >>= 1) {
+      data_[i >> 1] = op_(data_[i], data_[i ^ 1]);
+    }
+  }
+
   size_t size_;
   std::vector<ValueType> data_;
   BinaryOp op_;
@@ -62,7 +75,7 @@ int main() {
     std::cin >> a;
   }
 
-  SegmentTree tree(nums.begin(), nums.end(), INT_MAX, Min());
+  SegmentTree tree(nums.begin(), nums.end(), Min(), INT_MAX);
 
   while (q--) {
     int type;
@@ -72,7 +85,7 @@ int main() {
       int idx, value;
       std::cin >> idx >> value;
 
-      tree.Modify(idx - 1, value);
+      tree.Set(idx - 1, value);
     } else if (type == 2) {
       int left, right;
       std::cin >> left >> right;
