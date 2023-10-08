@@ -175,12 +175,12 @@ code solutions/weird-algorithm/main.cpp
 
 ### Range Queries
 
-| №    | Name                                                                  | Solution                                                                                  | Tags         |
-| ---- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | :----------- |
-| 110. | [Static Range Sum Queries](https://cses.fi/problemset/task/1646)      | [static-range-sum-queries/main.cpp](/solutions/static-range-sum-queries/main.cpp)         | Prefix Sum   |
-| 111. | [Static Range Minimum Queries](https://cses.fi/problemset/task/1647)  | [static-range-minimum-queries/main.cpp](/solutions/static-range-minimum-queries/main.cpp) | Sparse Table |
-| 112. | [Dynamic Range Sum Queries](https://cses.fi/problemset/task/1648)     | [dynamic-range-sum-queries/main.cpp](/solutions/dynamic-range-sum-queries/main.cpp)       | Fenwick tree |
-| 113. | [Dynamic Range Minimum Queries](https://cses.fi/problemset/task/1649) | ||
+| №    | Name                                                                  | Solution                                                                                    | Tags         |
+| ---- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | :----------- |
+| 110. | [Static Range Sum Queries](https://cses.fi/problemset/task/1646)      | [static-range-sum-queries/main.cpp](/solutions/static-range-sum-queries/main.cpp)           | Prefix Sum   |
+| 111. | [Static Range Minimum Queries](https://cses.fi/problemset/task/1647)  | [static-range-minimum-queries/main.cpp](/solutions/static-range-minimum-queries/main.cpp)   | Sparse Table |
+| 112. | [Dynamic Range Sum Queries](https://cses.fi/problemset/task/1648)     | [dynamic-range-sum-queries/main.cpp](/solutions/dynamic-range-sum-queries/main.cpp)         | Fenwick Tree |
+| 113. | [Dynamic Range Minimum Queries](https://cses.fi/problemset/task/1649) | [dynamic-range-minimum-queries/main.cpp](/solutions/dynamic-range-minimum-queries/main.cpp) | Segment Tree |
 | 114. | [Range Xor Queries](https://cses.fi/problemset/task/1650)             | ||
 | 115. | [Range Update Queries](https://cses.fi/problemset/task/1651)          | ||
 | 116. | [Forest Queries](https://cses.fi/problemset/task/1652)                | ||
