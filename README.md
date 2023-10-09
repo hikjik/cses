@@ -184,7 +184,7 @@ code solutions/weird-algorithm/main.cpp
 | 114. | [Range Xor Queries](https://cses.fi/problemset/task/1650)             | [range-xor-queries/main.cpp](/solutions/range-xor-queries/main.cpp)                         | Prefix Sum    |
 | 115. | [Range Update Queries](https://cses.fi/problemset/task/1651)          | [range-update-queries/main.cpp](/solutions/range-update-queries/main.cpp)                   | Segment Tree  |
 | 116. | [Forest Queries](https://cses.fi/problemset/task/1652)                | [forest-queries/main.cpp](/solutions/forest-queries/main.cpp)                               | Prefix Sum 2D |
-| 117. | [Hotel Queries](https://cses.fi/problemset/task/1143)                 | ||
+| 117. | [Hotel Queries](https://cses.fi/problemset/task/1143)                 | [hotel-queries/main.cpp](/solutions/hotel-queries/main.cpp)                                 | Segment Tree  |
 | 118. | [List Removals](https://cses.fi/problemset/task/1749)                 | ||
 | 119. | [Salary Queries](https://cses.fi/problemset/task/1144)                | ||
 | 120. | [Prefix Sum Queries](https://cses.fi/problemset/task/2166)            | ||

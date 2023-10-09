@@ -22,6 +22,8 @@ public:
     }
   }
 
+  size_t Size() const { return size_; }
+
   void Set(size_t idx, ValueType value) {
     data_[idx += size_] = value;
     Update(idx);
@@ -33,7 +35,7 @@ public:
   }
 
   // process a range query on interval [left, right]
-  ValueType RangeQuery(size_t left, size_t right) {
+  ValueType RangeQuery(size_t left, size_t right) const {
     auto res = init_;
     for (left += size_, right += size_ + 1; left < right;
          left >>= 1, right >>= 1) {
@@ -60,8 +62,10 @@ private:
   ValueType init_;
 };
 
-struct Min {
-  int operator()(int lhs, int rhs) { return std::min(lhs, rhs); }
+template <typename ValueType> struct Min {
+  int operator()(ValueType lhs, ValueType rhs) const {
+    return std::min(lhs, rhs);
+  }
 };
 
 int main() {
@@ -75,7 +79,7 @@ int main() {
     std::cin >> a;
   }
 
-  SegmentTree tree(nums.begin(), nums.end(), Min(), INT_MAX);
+  SegmentTree tree(nums.begin(), nums.end(), Min<int>(), INT_MAX);
 
   while (q--) {
     int type;

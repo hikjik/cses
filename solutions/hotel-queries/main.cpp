@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <climits>
 #include <iostream>
 #include <vector>
 
@@ -62,40 +61,49 @@ private:
   ValueType init_;
 };
 
+template <typename ValueType> struct Max {
+  int operator()(ValueType lhs, ValueType rhs) const {
+    return std::max(lhs, rhs);
+  }
+};
+
+template <typename ValueType, typename BinaryOp>
+size_t BinarySearch(const SegmentTree<ValueType, BinaryOp> &tree,
+                    ValueType value) {
+  int left = 0, right = tree.Size();
+  while (left < right) {
+    const auto middle = left + (right - left) / 2;
+    tree.RangeQuery(0, middle) < value ? left = middle + 1 : right = middle;
+  }
+  return left;
+}
+
 int main() {
   FastIO();
 
   int n, q;
   std::cin >> n >> q;
 
-  SegmentTree tree(n + 1, std::plus<long long>(), 0LL);
-
-  std::vector<int> nums(n + 1);
-  for (int i = 0; i < n; ++i) {
-    std::cin >> nums[i + 1];
-
-    tree.Set(i, nums[i + 1] - nums[i]);
+  std::vector<int> nums(n);
+  for (auto &a : nums) {
+    std::cin >> a;
   }
+
+  SegmentTree tree(nums.begin(), nums.end(), Max<int>(), 0);
 
   while (q--) {
-    int type;
-    std::cin >> type;
+    int r;
+    std::cin >> r;
 
-    if (type == 1) {
-      int left, right, value;
-      std::cin >> left >> right >> value;
-
-      tree.Add(left - 1, value);
-      tree.Add(right, -value);
-    } else if (type == 2) {
-      int idx;
-      std::cin >> idx;
-
-      std::cout << tree.RangeQuery(0, idx - 1) << "\n";
+    const auto idx = BinarySearch(tree, r);
+    if (idx < tree.Size()) {
+      std::cout << idx + 1 << " ";
+      tree.Add(idx, -r);
     } else {
-      throw;
+      std::cout << 0 << " ";
     }
   }
+  std::cout << "\n";
 
   return 0;
 }
