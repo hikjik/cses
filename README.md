@@ -186,7 +186,7 @@ code solutions/weird-algorithm/main.cpp
 | 116. | [Forest Queries](https://cses.fi/problemset/task/1652)                | [forest-queries/main.cpp](/solutions/forest-queries/main.cpp)                               | Prefix Sum 2D |
 | 117. | [Hotel Queries](https://cses.fi/problemset/task/1143)                 | [hotel-queries/main.cpp](/solutions/hotel-queries/main.cpp)                                 | Segment Tree  |
 | 118. | [List Removals](https://cses.fi/problemset/task/1749)                 | [list-removals/main.cpp](/solutions/list-removals/main.cpp)                                 | Ordered Set   |
-| 119. | [Salary Queries](https://cses.fi/problemset/task/1144)                | ||
+| 119. | [Salary Queries](https://cses.fi/problemset/task/1144)                | [salary-queries/main.cpp](/solutions/salary-queries/main.cpp)                               | Ordered Set   |
 | 120. | [Prefix Sum Queries](https://cses.fi/problemset/task/2166)            | ||
 | 121. | [Pizzeria Queries](https://cses.fi/problemset/task/2206)              | ||
 | 122. | [Subarray Sum Queries](https://cses.fi/problemset/task/1190)          | ||
