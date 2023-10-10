@@ -204,10 +204,10 @@ code solutions/weird-algorithm/main.cpp
 
 ### Tree Algorithms
 
-| №    | Name                                                          | Solution                                                  | Tags |
-| ---- | ------------------------------------------------------------- | --------------------------------------------------------- |-|
-| 129. | [Subordinates](https://cses.fi/problemset/task/1674)          | [subordinates/main.cpp](/solutions/subordinates/main.cpp) ||
-| 130. | [Tree Matching](https://cses.fi/problemset/task/1130)         |||
+| №    | Name                                                          | Solution                                                    | Tags                        |
+| ---- | ------------------------------------------------------------- | ----------------------------------------------------------- | --------------------------- |
+| 129. | [Subordinates](https://cses.fi/problemset/task/1674)          | [subordinates/main.cpp](/solutions/subordinates/main.cpp)   | DFS<br/>Dynamic Programming |
+| 130. | [Tree Matching](https://cses.fi/problemset/task/1130)         | [tree-matching/main.cpp](/solutions/tree-matching/main.cpp) | DFS<br/>Greedy              |
 | 131. | [Tree Diameter](https://cses.fi/problemset/task/1131)         |||
 | 132. | [Tree Distances I](https://cses.fi/problemset/task/1132)      |||
 | 133. | [Tree Distances II](https://cses.fi/problemset/task/1133)     |||
