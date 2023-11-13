@@ -37,7 +37,7 @@ NC='\033[0m' # No Color
 
 IN="tests/input.#.txt"
 OUT="tests/output.#.txt"
-TL=1 # Time Limit (in seconds)
+TL=15 # Time Limit (in seconds)
 CPP="g++ -std=c++20 -O2 -w -lm"
 
 ## ****** END - Configuration ********

@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <iostream>
 #include <limits>
-#include <optional>
 #include <queue>
 #include <vector>
 
@@ -81,10 +80,10 @@ void BreadthFirstSearch(Vertex origin_vertex, const Graph &graph,
 template <class Vertex, class Edge> class BreadthFirstSearchVisitor {
 public:
   virtual ~BreadthFirstSearchVisitor() = default;
-  virtual void DiscoverVertex(const Vertex & /*vertex*/) {}
-  virtual void ExamineEdge(const Edge & /*edge*/) {}
-  virtual void TreeEdge(const Edge & /*edge*/) {}
-  virtual void ExamineVertex(const Vertex & /*vertex*/) {}
+  virtual void DiscoverVertex(const Vertex &) {}
+  virtual void ExamineEdge(const Edge &) {}
+  virtual void TreeEdge(const Edge &) {}
+  virtual void ExamineVertex(const Vertex &) {}
 };
 
 } // namespace traversal
@@ -154,19 +153,25 @@ public:
 
   int VertexCount() const { return graph_.VertexCount(); }
 
-  int EdgeFlow(int edge_id) const { return edges_properties_[edge_id].flow; }
+  IteratorRange<Graph::EdgeIterator> OutgoingEdges(int vertex,
+                                                   int offset) const {
+    auto range = graph_.OutgoingEdges(vertex);
+    return {range.begin() + offset, range.end()};
+  }
 
-  int EdgeCapacity(int edge_id) const {
+  int Flow(int edge_id) const { return edges_properties_[edge_id].flow; }
+
+  int Capacity(int edge_id) const {
     return edges_properties_[edge_id].capacity;
   }
 
-  int EdgeResidualCapacity(int edge_id) const {
-    return EdgeCapacity(edge_id) - EdgeFlow(edge_id);
+  int ResidualCapacity(int edge_id) const {
+    return Capacity(edge_id) - Flow(edge_id);
   }
 
   FilteredGraph ResidualNetworkView() const {
     return FilteredGraph(graph_, [this](const Graph::Edge &edge) {
-      return EdgeResidualCapacity(edge.id) > 0;
+      return ResidualCapacity(edge.id) > 0;
     });
   }
 
@@ -209,60 +214,86 @@ private:
   FlowNetwork network_;
 };
 
-class AugmentingPathFinder
+class LevelGraphBuilder
     : public traversal::BreadthFirstSearchVisitor<int, Graph::Edge> {
 public:
-  explicit AugmentingPathFinder(std::vector<std::optional<Graph::Edge>> *path)
-      : path_(*path) {}
+  explicit LevelGraphBuilder(std::vector<int> *levels) : levels_(*levels) {}
 
-  void TreeEdge(const Graph::Edge &edge) override { path_[edge.to] = edge; }
+  void TreeEdge(const Graph::Edge &edge) override {
+    levels_[edge.to] = levels_[edge.from] + 1;
+  }
 
 private:
-  std::vector<std::optional<Graph::Edge>> &path_;
+  std::vector<int> &levels_;
 };
 
-int ComputeAugmentingPathMinCapacity(
-    const FlowNetwork &network,
-    const std::vector<std::optional<Graph::Edge>> &path) {
-  if (!path[network.Sink()]) {
+class MaxFlowCalculator {
+public:
+  MaxFlowCalculator(const MaxFlowCalculator &) = delete;
+  MaxFlowCalculator(MaxFlowCalculator &&) = delete;
+  MaxFlowCalculator &operator=(const MaxFlowCalculator &) = delete;
+  MaxFlowCalculator &operator=(MaxFlowCalculator &&) = delete;
+
+  static MaxFlowCalculator &GetInstance() {
+    static MaxFlowCalculator instance;
+    return instance;
+  }
+
+  long long ComputeMaxFlow(FlowNetwork *network) {
+    network_ = network;
+    long long max_flow = 0;
+    while (BuildLevelGraph()) {
+      max_flow += FindBlockingFlow();
+    };
+    return max_flow;
+  }
+
+private:
+  static constexpr int kInfFlow = std::numeric_limits<int>::max();
+
+  MaxFlowCalculator() : network_(nullptr) {}
+
+  bool BuildLevelGraph() {
+    levels_.assign(network_->VertexCount(), -1);
+    levels_[network_->Source()] = 0;
+    LevelGraphBuilder visitor(&levels_);
+    traversal::BreadthFirstSearch(network_->Source(),
+                                  network_->ResidualNetworkView(), visitor);
+    return levels_[network_->Sink()] != -1;
+  }
+
+  long long FindBlockingFlow() {
+    long long total = 0;
+    offsets_.assign(network_->VertexCount(), 0);
+    while (auto flow = PushFlow(kInfFlow, network_->Source())) {
+      total += flow;
+    }
+    return total;
+  }
+
+  int PushFlow(int flow, int vertex) {
+    if (vertex == network_->Sink()) {
+      return flow;
+    }
+    for (const auto &edge : network_->OutgoingEdges(vertex, offsets_[vertex])) {
+      if (levels_[edge.from] + 1 == levels_[edge.to] &&
+          network_->ResidualCapacity(edge.id) > 0) {
+        const auto path_flow = PushFlow(
+            std::min(flow, network_->ResidualCapacity(edge.id)), edge.to);
+        if (path_flow) {
+          network_->AddFlow(edge.id, path_flow);
+          return path_flow;
+        }
+      }
+      ++offsets_[vertex];
+    }
     return 0;
   }
-  auto capacity = std::numeric_limits<int>::max();
-  for (auto vertex = network.Sink(); vertex != network.Source();
-       vertex = path[vertex]->from) {
-    const auto edge_id = path[vertex]->id;
-    capacity = std::min(capacity, network.EdgeResidualCapacity(edge_id));
-  }
-  return capacity;
-}
 
-int FindAugmentingPath(const FlowNetwork &network,
-                       std::vector<std::optional<Graph::Edge>> *path) {
-  path->assign(network.VertexCount(), std::nullopt);
-  AugmentingPathFinder visitor(path);
-  traversal::BreadthFirstSearch(network.Source(), network.ResidualNetworkView(),
-                                visitor);
-  return ComputeAugmentingPathMinCapacity(network, *path);
-}
-
-void PushFlow(FlowNetwork *network, int capacity,
-              const std::vector<std::optional<Graph::Edge>> &path) {
-  for (auto vertex = network->Sink(); vertex != network->Source();
-       vertex = path[vertex]->from) {
-    const auto edge_id = path[vertex]->id;
-    network->AddFlow(edge_id, capacity);
-  }
-}
-
-long long ComputeMaxFlow(FlowNetwork *network) {
-  std::vector<std::optional<Graph::Edge>> path;
-  long long max_flow = 0;
-  while (auto capacity = FindAugmentingPath(*network, &path)) {
-    PushFlow(network, capacity, path);
-    max_flow += capacity;
-  };
-  return max_flow;
-}
+  FlowNetwork *network_;
+  std::vector<int> levels_;
+  std::vector<int> offsets_;
+};
 
 FlowNetwork ReadNetwork() {
   int vertex_count, edge_count;
@@ -277,7 +308,6 @@ FlowNetwork ReadNetwork() {
 
     builder.AddEdge(from - 1, to - 1, capacity);
   }
-
   return builder.Build();
 }
 
@@ -290,8 +320,9 @@ int main() {
   FastIO();
 
   auto network = ReadNetwork();
+  auto &calculator = MaxFlowCalculator::GetInstance();
 
-  std::cout << ComputeMaxFlow(&network) << "\n";
+  std::cout << calculator.ComputeMaxFlow(&network) << "\n";
 
   return 0;
 }
