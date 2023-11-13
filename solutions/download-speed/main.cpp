@@ -1,168 +1,284 @@
 #include <algorithm>
 #include <iostream>
 #include <limits>
+#include <optional>
 #include <queue>
-#include <unordered_set>
 #include <vector>
 
+template <class Iterator> class IteratorRange {
+public:
+  IteratorRange(Iterator begin, Iterator end) : begin_(begin), end_(end) {}
+
+  Iterator begin() const { return begin_; }
+
+  Iterator end() const { return end_; }
+
+private:
+  Iterator begin_, end_;
+};
+
+template <typename Iterator> class FilterIterator : public Iterator {
+public:
+  using Predicate = std::function<bool(const typename Iterator::value_type &)>;
+
+  FilterIterator() = default;
+  FilterIterator(Predicate predicate, Iterator base, Iterator end)
+      : Iterator(base), end_(end), predicate_(predicate) {
+    SatisfyPredicate();
+  }
+
+  FilterIterator &operator++() {
+    Iterator::operator++();
+    SatisfyPredicate();
+    return *this;
+  }
+
+private:
+  void SatisfyPredicate() {
+    while (*this != end_ and !predicate_(**this)) {
+      Iterator::operator++();
+    }
+  }
+
+  Iterator end_;
+  Predicate predicate_;
+};
+
+namespace traversal {
+
 template <class Vertex, class Graph, class Visitor>
-void BreadthFirstSearch(Vertex source, const Graph &graph, Visitor visitor) {
-  visitor.DiscoverVertex(source, graph);
+void BreadthFirstSearch(Vertex origin_vertex, const Graph &graph,
+                        Visitor visitor) {
+  visitor.DiscoverVertex(origin_vertex);
 
-  std::unordered_set<Vertex> visited{source};
-  std::queue<Vertex> queue;
-  queue.push(source);
+  std::vector<bool> discovered_vertices(graph.VertexCount());
+  discovered_vertices[origin_vertex] = true;
 
-  while (!queue.empty()) {
-    const auto vertex = queue.front();
-    queue.pop();
+  std::queue<Vertex> vertices_to_explore;
+  vertices_to_explore.push(origin_vertex);
 
-    visitor.ExamineVertex(vertex, graph);
+  while (!vertices_to_explore.empty()) {
+    const auto vertex = vertices_to_explore.front();
+    vertices_to_explore.pop();
 
-    for (const auto &edge : OutgoingEdges(graph, vertex)) {
-      visitor.ExamineEdge(edge, graph);
+    visitor.ExamineVertex(vertex);
 
-      const auto target = GetTarget(graph, edge);
-      if (!visited.contains(target)) {
-        visitor.TreeEdge(edge, graph);
-        visitor.DiscoverVertex(target, graph);
+    for (const auto &edge : graph.OutgoingEdges(vertex)) {
+      visitor.ExamineEdge(edge);
 
-        visited.insert(target);
-        queue.push(target);
+      const auto adjacent_vertex = graph.EdgeTarget(edge);
+      if (!discovered_vertices[adjacent_vertex]) {
+        visitor.TreeEdge(edge);
+        visitor.DiscoverVertex(adjacent_vertex);
+
+        discovered_vertices[adjacent_vertex] = true;
+        vertices_to_explore.push(adjacent_vertex);
       }
     }
   }
 }
 
-template <class Graph, class Vertex, class Edge>
-class BreadthFirstSearchVisitor {
+template <class Vertex, class Edge> class BreadthFirstSearchVisitor {
 public:
   virtual ~BreadthFirstSearchVisitor() = default;
-  virtual void DiscoverVertex(Vertex, const Graph &) {}
-  virtual void ExamineEdge(Edge, const Graph &) {}
-  virtual void TreeEdge(Edge, const Graph &) {}
-  virtual void ExamineVertex(Vertex, const Graph &) {}
+  virtual void DiscoverVertex(const Vertex & /*vertex*/) {}
+  virtual void ExamineEdge(const Edge & /*edge*/) {}
+  virtual void TreeEdge(const Edge & /*edge*/) {}
+  virtual void ExamineVertex(const Vertex & /*vertex*/) {}
 };
 
-class FlowGraph {
+} // namespace traversal
+
+class Graph {
 public:
   struct Edge {
+    Edge(int from, int to, int id) : from(from), to(to), id(id) {}
+
     int from, to;
-    int capacity, flow;
+    int id;
   };
 
-  explicit FlowGraph(size_t vertex_count) : adjacency_lists_(vertex_count) {}
+  using AdjacencyList = std::vector<Edge>;
+  using EdgeIterator = AdjacencyList::const_iterator;
+
+  explicit Graph(size_t vertex_count) : adjacency_lists_(vertex_count) {}
+
+  size_t VertexCount() const { return adjacency_lists_.size(); }
+
+  void AddEdge(int from, int to, int id) {
+    adjacency_lists_[from].emplace_back(from, to, id);
+  }
+
+  IteratorRange<EdgeIterator> OutgoingEdges(int from) const {
+    return {adjacency_lists_[from].begin(), adjacency_lists_[from].end()};
+  }
+
+  int EdgeTarget(const Edge &edge) const { return edge.to; }
+
+private:
+  std::vector<AdjacencyList> adjacency_lists_;
+};
+
+class FilteredGraph {
+public:
+  using FilteredEdgeIterator = FilterIterator<Graph::EdgeIterator>;
+  using Predicate = FilteredEdgeIterator::Predicate;
+
+  FilteredGraph(const Graph &graph, Predicate predicate)
+      : graph_(graph), predicate_(predicate) {}
+
+  size_t VertexCount() const { return graph_.VertexCount(); }
+
+  IteratorRange<FilteredEdgeIterator> OutgoingEdges(int from) const {
+    auto range = graph_.OutgoingEdges(from);
+    return {{predicate_, range.begin(), range.end()},
+            {predicate_, range.end(), range.end()}};
+  }
+
+  int EdgeTarget(const Graph::Edge &edge) const {
+    return graph_.EdgeTarget(edge);
+  }
+
+private:
+  const Graph &graph_;
+  Predicate predicate_;
+};
+
+class FlowNetwork {
+public:
+  friend class FlowNetworkBuilder;
+
+  int Source() const { return source_; }
+
+  int Sink() const { return sink_; }
+
+  int VertexCount() const { return graph_.VertexCount(); }
+
+  int EdgeFlow(int edge_id) const { return edges_properties_[edge_id].flow; }
+
+  int EdgeCapacity(int edge_id) const {
+    return edges_properties_[edge_id].capacity;
+  }
+
+  int EdgeResidualCapacity(int edge_id) const {
+    return EdgeCapacity(edge_id) - EdgeFlow(edge_id);
+  }
+
+  FilteredGraph ResidualNetworkView() const {
+    return FilteredGraph(graph_, [this](const Graph::Edge &edge) {
+      return EdgeResidualCapacity(edge.id) > 0;
+    });
+  }
+
+  void AddFlow(int edge_id, int flow) {
+    edges_properties_[edge_id].flow += flow;
+    edges_properties_[edge_id ^ 1].flow -= flow;
+  }
+
+private:
+  struct EdgeProperties {
+    EdgeProperties(int flow, int capacity) : flow(flow), capacity(capacity) {}
+
+    int flow, capacity;
+  };
+
+  explicit FlowNetwork(int vertex_count) : graph_(vertex_count) {}
+
+  Graph graph_;
+  std::vector<EdgeProperties> edges_properties_;
+  int source_, sink_;
+};
+
+class FlowNetworkBuilder {
+public:
+  explicit FlowNetworkBuilder(size_t vertex_count) : network_(vertex_count) {}
 
   void AddEdge(int from, int to, int capacity) {
-    adjacency_lists_[from].push_back(edges_.size());
-    edges_.push_back({from, to, capacity, 0});
-    adjacency_lists_[to].push_back(edges_.size());
-    edges_.push_back({to, from, 0, 0});
+    network_.graph_.AddEdge(from, to, network_.edges_properties_.size());
+    network_.edges_properties_.emplace_back(0, capacity);
+    network_.graph_.AddEdge(to, from, network_.edges_properties_.size());
+    network_.edges_properties_.emplace_back(0, 0);
   }
 
-  size_t GetVertexCount() const { return adjacency_lists_.size(); }
+  void SetSource(int source) { network_.source_ = source; }
+  void SetSink(int sink) { network_.sink_ = sink; }
 
-  const std::vector<int> &GetEdgesIds(int from) const {
-    return adjacency_lists_[from];
-  }
-
-  const Edge &GetEdge(int id) const { return edges_[id]; }
-
-  bool IsOriginalEdge(int id) const { return !(id & 1); }
-
-  void AddFlow(int id, int flow) {
-    edges_[id].flow += flow;
-    edges_[id ^ 1].flow -= flow;
-  }
+  FlowNetwork Build() const { return network_; }
 
 private:
-  std::vector<Edge> edges_;
-  std::vector<std::vector<int>> adjacency_lists_;
+  FlowNetwork network_;
 };
 
-std::vector<int> OutgoingEdges(const FlowGraph &graph, int vertex) {
-  std::vector<int> edges_ids;
-  for (int edge_id : graph.GetEdgesIds(vertex)) {
-    if (graph.GetEdge(edge_id).capacity > graph.GetEdge(edge_id).flow) {
-      edges_ids.push_back(edge_id);
-    }
-  }
-  return edges_ids;
-}
-
-int GetTarget(const FlowGraph &graph, int edge_id) {
-  return graph.GetEdge(edge_id).to;
-}
-
-struct Path {
-  Path(size_t vertex_count, int source, int sink)
-      : incoming_edge_id(vertex_count), source(source), sink(sink) {}
-
-  std::vector<int> incoming_edge_id;
-  int source, sink;
-};
-
-class PathFinder : public BreadthFirstSearchVisitor<FlowGraph, int, int> {
+class AugmentingPathFinder
+    : public traversal::BreadthFirstSearchVisitor<int, Graph::Edge> {
 public:
-  PathFinder(Path *path, std::vector<int> *capacity, bool *is_sink_reachable)
-      : path_(*path), capacity_(*capacity),
-        is_sink_reachable_(*is_sink_reachable) {}
+  explicit AugmentingPathFinder(std::vector<std::optional<Graph::Edge>> *path)
+      : path_(*path) {}
 
-  void TreeEdge(int edge_id, const FlowGraph &graph) override {
-    const auto &edge = graph.GetEdge(edge_id);
-    capacity_[edge.to] =
-        std::min(capacity_[edge.from], edge.capacity - edge.flow);
-    path_.incoming_edge_id[edge.to] = edge_id;
-  }
-
-  void DiscoverVertex(int vertex, const FlowGraph &graph) override {
-    if (vertex == path_.sink) {
-      is_sink_reachable_ = true;
-    }
-  }
+  void TreeEdge(const Graph::Edge &edge) override { path_[edge.to] = edge; }
 
 private:
-  Path &path_;
-  std::vector<int> &capacity_;
-  bool &is_sink_reachable_;
+  std::vector<std::optional<Graph::Edge>> &path_;
 };
 
-void PushFlow(FlowGraph &graph, const Path &path, int flow) {
-  auto vertex = path.sink;
-  while (vertex != path.source) {
-    const auto edge_id = path.incoming_edge_id[vertex];
-    graph.AddFlow(edge_id, flow);
-    vertex = graph.GetEdge(edge_id).from;
+int ComputeAugmentingPathMinCapacity(
+    const FlowNetwork &network,
+    const std::vector<std::optional<Graph::Edge>> &path) {
+  if (!path[network.Sink()]) {
+    return 0;
+  }
+  auto capacity = std::numeric_limits<int>::max();
+  for (auto vertex = network.Sink(); vertex != network.Source();
+       vertex = path[vertex]->from) {
+    const auto edge_id = path[vertex]->id;
+    capacity = std::min(capacity, network.EdgeResidualCapacity(edge_id));
+  }
+  return capacity;
+}
+
+int FindAugmentingPath(const FlowNetwork &network,
+                       std::vector<std::optional<Graph::Edge>> *path) {
+  path->assign(network.VertexCount(), std::nullopt);
+  AugmentingPathFinder visitor(path);
+  traversal::BreadthFirstSearch(network.Source(), network.ResidualNetworkView(),
+                                visitor);
+  return ComputeAugmentingPathMinCapacity(network, *path);
+}
+
+void PushFlow(FlowNetwork *network, int capacity,
+              const std::vector<std::optional<Graph::Edge>> &path) {
+  for (auto vertex = network->Sink(); vertex != network->Source();
+       vertex = path[vertex]->from) {
+    const auto edge_id = path[vertex]->id;
+    network->AddFlow(edge_id, capacity);
   }
 }
 
-void BuildMaxFlow(FlowGraph &graph, int source, int sink) {
-  std::vector<int> min_capacity(graph.GetVertexCount(),
-                                std::numeric_limits<int>::max());
-  Path path(graph.GetVertexCount(), source, sink);
-  auto is_sink_reachable = false;
-  do {
-    is_sink_reachable = false;
-    PathFinder finder(&path, &min_capacity, &is_sink_reachable);
-    BreadthFirstSearch(source, graph, finder);
-
-    if (is_sink_reachable) {
-      const auto flow = min_capacity[sink];
-      PushFlow(graph, path, flow);
-    }
-  } while (is_sink_reachable);
+long long ComputeMaxFlow(FlowNetwork *network) {
+  std::vector<std::optional<Graph::Edge>> path;
+  long long max_flow = 0;
+  while (auto capacity = FindAugmentingPath(*network, &path)) {
+    PushFlow(network, capacity, path);
+    max_flow += capacity;
+  };
+  return max_flow;
 }
 
-long long ComputeMaxFlow(FlowGraph &graph, int source, int sink) {
-  BuildMaxFlow(graph, source, sink);
+FlowNetwork ReadNetwork() {
+  int vertex_count, edge_count;
+  std::cin >> vertex_count >> edge_count;
 
-  long long flow = 0;
-  for (int edge_id : graph.GetEdgesIds(source)) {
-    if (graph.IsOriginalEdge(edge_id)) {
-      flow += graph.GetEdge(edge_id).flow;
-    }
+  FlowNetworkBuilder builder(vertex_count);
+  builder.SetSource(0);
+  builder.SetSink(vertex_count - 1);
+  while (edge_count--) {
+    int from, to, capacity;
+    std::cin >> from >> to >> capacity;
+
+    builder.AddEdge(from - 1, to - 1, capacity);
   }
-  return flow;
+
+  return builder.Build();
 }
 
 void FastIO() {
@@ -173,18 +289,9 @@ void FastIO() {
 int main() {
   FastIO();
 
-  int n, m;
-  std::cin >> n >> m;
+  auto network = ReadNetwork();
 
-  FlowGraph graph(n);
-  while (m--) {
-    int a, b, c;
-    std::cin >> a >> b >> c;
-
-    graph.AddEdge(a - 1, b - 1, c);
-  }
-
-  std::cout << ComputeMaxFlow(graph, 0, n - 1) << "\n";
+  std::cout << ComputeMaxFlow(&network) << "\n";
 
   return 0;
 }
