@@ -163,7 +163,7 @@ code solutions/weird-algorithm/main.cpp
 | 103. | [Teleporters Path](https://cses.fi/problemset/task/1693/)     | [C++](/solutions/teleporters-path/main.cpp)     | Eulerian Path                                                                            |
 | 104. | [Hamiltonian Flights](https://cses.fi/problemset/task/1690/)  | [C++](/solutions/hamiltonian-flights/main.cpp)  | Hamiltonian Path<br/>Bitmasking and Dynamic Programming                                  |
 | 105. | [Knight's Tour](https://cses.fi/problemset/task/1689/)        | [C++](/solutions/knights-tour/main.cpp)         | Hamiltonian Path<br/>Backtracking with Warnsdorff's heuristic                            |
-| 106. | [Download Speed](https://cses.fi/problemset/task/1694/)       | [C++](/solutions/download-speed/main.cpp)       | Max Flow</br>Edmonds Karp Algorithm                                                      |
+| 106. | [Download Speed](https://cses.fi/problemset/task/1694/)       | [C++](/solutions/download-speed/main.cpp)       | Max Flow</br>Dinic's Algorithm                                                      |
 | 107. | [Police Chase](https://cses.fi/problemset/task/1695/)         | [C++](/solutions/police-chase/main.cpp)         | Max Flow</br>Minimum Cut</br>Edmonds Karp Algorithm                                      |
 | 108. | [School Dance](https://cses.fi/problemset/task/1696/)         | [C++](/solutions/school-dance/main.cpp)         | Max Flow</br>Bipartite Matching</br>Edmonds Karp Algorithm                               |
 | 109. | [Distinct Routes](https://cses.fi/problemset/task/1711/)      | [C++](/solutions/distinct-routes/main.cpp)      | Max Flow</br>Edge Disjoint Paths</br>Edmonds Karp Algorithm                              |
