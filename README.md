@@ -275,7 +275,7 @@ code solutions/weird-algorithm/main.cpp
 | ---- | -------------------------------------------------------------- | -------------------------------------------- | ----------- |
 | 176. | [Word Combinations](https://cses.fi/problemset/task/1731)      | [C++](/solutions/word-combinations/main.cpp) | Trie<br/>DP |
 | 177. | [String Matching](https://cses.fi/problemset/task/1753)        | [C++](/solutions/string-matching/main.cpp)   | KMP         |
-| 178. | [Finding Borders](https://cses.fi/problemset/task/1732)        |||
+| 178. | [Finding Borders](https://cses.fi/problemset/task/1732)        | [C++](/solutions/finding-borders/main.cpp)   | Z-Function  |
 | 179. | [Finding Periods](https://cses.fi/problemset/task/1733)        |||
 | 180. | [Minimal Rotation](https://cses.fi/problemset/task/1110)       |||
 | 181. | [Longest Palindrome](https://cses.fi/problemset/task/1111)     |||
