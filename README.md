@@ -271,9 +271,9 @@ code solutions/weird-algorithm/main.cpp
 
 ### String Algorithms
 
-| №    | Name                                                           | Solution | Tags |
-| ---- | -------------------------------------------------------------- | -------- |-|
-| 176. | [Word Combinations](https://cses.fi/problemset/task/1731)      |||
+| №    | Name                                                           | Solution                                     | Tags        |
+| ---- | -------------------------------------------------------------- | -------------------------------------------- | ----------- |
+| 176. | [Word Combinations](https://cses.fi/problemset/task/1731)      | [C++](/solutions/word-combinations/main.cpp) | Trie<br/>DP |
 | 177. | [String Matching](https://cses.fi/problemset/task/1753)        |||
 | 178. | [Finding Borders](https://cses.fi/problemset/task/1732)        |||
 | 179. | [Finding Periods](https://cses.fi/problemset/task/1733)        |||
