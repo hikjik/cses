@@ -7,6 +7,22 @@ void FastIO() {
   std::cin.tie(nullptr), std::cout.tie(nullptr);
 }
 
+std::vector<int> LPS(const std::string &s) {
+  std::vector<int> lps(s.size());
+  for (int i = 1, j = 0; i < std::ssize(s);) {
+    if (s[i] == s[j]) {
+      lps[i++] = ++j;
+    } else {
+      if (j) {
+        j = lps[j - 1];
+      } else {
+        ++i;
+      }
+    }
+  }
+  return lps;
+}
+
 std::vector<int> zFunction(const std::string &s) {
   const int n = s.size();
   std::vector<int> z(n);
@@ -32,13 +48,13 @@ int main() {
   std::string s;
   std::cin >> s;
 
-  const int n = s.size();
-  const auto z = zFunction(s);
+  for (auto a : zFunction(s)) {
+    std::cout << a << " ";
+  }
+  std::cout << "\n";
 
-  for (int j = n - 1; j > 0; --j) {
-    if (j + z[j] == n) {
-      std::cout << n - j << " ";
-    }
+  for (auto a : LPS(s)) {
+    std::cout << a << " ";
   }
   std::cout << "\n";
 

@@ -7,7 +7,7 @@ void FastIO() {
   std::cin.tie(nullptr), std::cout.tie(nullptr);
 }
 
-static std::vector<int> zFunction(const std::string &s) {
+std::vector<int> zFunction(const std::string &s) {
   const int n = s.size();
   std::vector<int> z(n);
   int l = 0, r = 0;

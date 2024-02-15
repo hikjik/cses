@@ -271,12 +271,12 @@ code solutions/weird-algorithm/main.cpp
 
 ### String Algorithms
 
-| №    | Name                                                           | Solution                                     | Tags        |
-| ---- | -------------------------------------------------------------- | -------------------------------------------- | ----------- |
-| 176. | [Word Combinations](https://cses.fi/problemset/task/1731)      | [C++](/solutions/word-combinations/main.cpp) | Trie<br/>DP |
-| 177. | [String Matching](https://cses.fi/problemset/task/1753)        | [C++](/solutions/string-matching/main.cpp)   | KMP         |
-| 178. | [Finding Borders](https://cses.fi/problemset/task/1732)        | [C++](/solutions/finding-borders/main.cpp)   | Z-Function  |
-| 179. | [Finding Periods](https://cses.fi/problemset/task/1733)        | [C++](/solutions/finding-periods/main.cpp)   | Z-Function  |
+| №    | Name                                                           | Solution                                     | Tags                      |
+| ---- | -------------------------------------------------------------- | -------------------------------------------- | ------------------------- |
+| 176. | [Word Combinations](https://cses.fi/problemset/task/1731)      | [C++](/solutions/word-combinations/main.cpp) | Trie<br/>DP               |
+| 177. | [String Matching](https://cses.fi/problemset/task/1753)        | [C++](/solutions/string-matching/main.cpp)   | KMP                       |
+| 178. | [Finding Borders](https://cses.fi/problemset/task/1732)        | [C++](/solutions/finding-borders/main.cpp)   | Z-Function                |
+| 179. | [Finding Periods](https://cses.fi/problemset/task/1733)        | [C++](/solutions/finding-periods/main.cpp)   | Z-Function                |
 | 180. | [Minimal Rotation](https://cses.fi/problemset/task/1110)       |||
 | 181. | [Longest Palindrome](https://cses.fi/problemset/task/1111)     |||
 | 182. | [Required Substring](https://cses.fi/problemset/task/1112)     |||
@@ -286,7 +286,7 @@ code solutions/weird-algorithm/main.cpp
 | 186. | [Pattern Positions](https://cses.fi/problemset/task/2104)      |||
 | 187. | [Distinct Substrings](https://cses.fi/problemset/task/2105)    |||
 | 188. | [Repeating Substring](https://cses.fi/problemset/task/2106)    |||
-| 189. | [String Functions](https://cses.fi/problemset/task/2107)       |||
+| 189. | [String Functions](https://cses.fi/problemset/task/2107)       | [C++](/solutions/string-functions/main.cpp)  | P-function<br/>Z-Function |
 | 190. | [Substring Order I](https://cses.fi/problemset/task/2108)      |||
 | 191. | [Substring Order II](https://cses.fi/problemset/task/2109)     |||
 | 192. | [Substring Distribution](https://cses.fi/problemset/task/2110) |||
