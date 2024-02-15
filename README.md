@@ -352,7 +352,7 @@ code solutions/weird-algorithm/main.cpp
 | №    | Name                                                                  | Solution                                        | Tags |
 | ---- | --------------------------------------------------------------------- | ----------------------------------------------- |-|
 | 224. | [Shortest Subsequence](https://cses.fi/problemset/task/1087)          |||
-| 225. | [Counting Bits](https://cses.fi/problemset/task/1146)                 |||
+| 225. | [Counting Bits](https://cses.fi/problemset/task/1146)                 | [C++](/solutions/counting-bits/main.cpp)        ||
 | 226. | [Swap Game](https://cses.fi/problemset/task/1670)                     | [C++](/solutions/swap-game/main.cpp)            ||
 | 227. | [Prüfer Code](https://cses.fi/problemset/task/1134)                   | [C++](/solutions/prufer-code/main.cpp)          ||
 | 228. | [Acyclic Graph Edges](https://cses.fi/problemset/task/1756)           |||
